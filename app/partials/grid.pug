@@ -1,10 +1,52 @@
-.page
+.header
+  .header__top
+    .wrapper.justify-between
+      div menu
+      div search
+  .header__mid
+    .wrapper
+      .row
+        .column-laptop-1-4
+          |logo
+        .column-laptop-1-2
+          |header-contacts
+        .column-laptop-1-4
+          |basket
+  .header__bottom
+    .wrapper
+      .row
+        each i '123456'
+          .column-laptop-1-4
+            |preferences
+
+.side-filter
+  .column-laptop-1-4
+    |filter here
+
+.main-content
   .wrapper
     .row
-      .column-laptop-1-4
-        |menu
+      each i '123456'
+        .column-laptop-1-4
+          |flowers pictures
+
+
+.news
+  .wrapper
+    .row
+      each i '123'
+        .column-laptop-1-3
+          |news here
+
+.footer
+  .footer__top
     .wrapper
-      .column-laptop-3-4
-        |logo contacts basket
-        .row
-          |preferences
+      .row
+        each i '123'
+          .column-laptop-1-4
+            |footer links infos here
+  .footer__bottom
+    .wrapper.justify-between
+      div copyrights
+      div footer__contacts
+
