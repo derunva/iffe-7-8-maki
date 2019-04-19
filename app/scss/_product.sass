@@ -1,0 +1,46 @@
+%product-text
+  color: #333333
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-bottom: 10px
+  font-size: 15px
+
+.product
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  padding-bottom: 25px
+  min-height: 100%
+
+  &__image
+    padding: 10px
+    margin-bottom: 10px
+
+    img
+      display: block
+      width: 100%
+
+  &__description
+    @extend %product-text
+    text-align: center
+
+  &__price
+    @extend %product-text
+    font-weight: 600
+    margin-top: auto
+
+  &__button
+    margin-top: auto
+
+  &__modificator
+    position: absolute
+    top: 0
+    left: 0
+
+    img
+      width: 100%
+
+.relative
+  position: relative

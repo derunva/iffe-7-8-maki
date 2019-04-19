@@ -1,7 +1,7 @@
 footer.footer
   .footer__top
     .wrapper
-      .flex-container
+      .row
         -
           var links = [["О магазине", "Почему мы?", "Отзывы", "Скидки"],
                         ["Гарантии", "Возврат денежных средств" ,"Корпоративные букеты", "и подарки"],
@@ -12,17 +12,18 @@ footer.footer
               a(href="#").links-block__link #{item}
   .footer__bottom
     .wrapper
-      .justify-content
+      .row.justify-between
         .copyright
           |Служба доставки цветов      2016
         .contacts
           .contacts__phone
-            img(alt='here-icon')
             a(href="tel:83515672146")
+              i.fas.fa-phone
               |8 (351) 
               span
                 |567 21 46
           .contacts__mail
-            img(alt="here-icon")
-            a(href="email:buket@mail.ru") e-mail: buket@mail.ru
+            a(href="email:buket@mail.ru")
+              i.fas.fa-envelope
+              |e-mail: buket@mail.ru
 script(src='js/src.js')
