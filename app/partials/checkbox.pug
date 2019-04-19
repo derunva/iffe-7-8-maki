@@ -1,0 +1,63 @@
+-
+  var chackboxItemsWith = [
+    {
+      title: 'Роза',
+      id: 'rose',
+      status: 'checked'
+    },
+    {
+      title: 'Орхидея',
+      id: 'orchid',
+      status: undefined
+    },
+    {
+      title: 'Лілія',
+      id: 'lily',
+      status: undefined
+    },
+    {
+      title: 'Гербер',
+      id: 'gerbera',
+      status: 'checked'
+    }
+  ]
+  var chackboxItemsTo = [
+    {
+      title: 'Мужчина',
+      id: 'man',
+      status: 'checked'
+    },
+    {
+      title: 'Ребенок',
+      id: 'child',
+      status: 'checked'
+    },
+    {
+      title: 'Женщина',
+      id: 'woman',
+      status: undefined
+    },
+    {
+      title: 'Семья',
+      id: 'famaly',
+      status: undefined
+    }
+  ]
+-;
+.checkbox.m-b-50
+  .m-b-20
+    |Букеты с
+  .checkbox__row
+    each item in chackboxItemsWith
+      -;
+      .checkbox__col.m-b-10
+        input(type="checkbox" id=item.id name=item.id checked=item.status)
+        label(for=id=item.id)=item.title
+  .m-b-20
+    |Букеты с
+  .checkbox__row
+    each item in chackboxItemsTo
+      -;
+      .checkbox__col.m-b-10
+        input(type="checkbox" id=item.id name=item.id checked=item.status)
+        label(for=id=item.id)=item.title
