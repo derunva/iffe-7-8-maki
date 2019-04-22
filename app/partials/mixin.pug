@@ -17,4 +17,10 @@ mixin product(image, description, price, modificator)
     .product__price #{price}
     .product__button
       |here button
+mixin checkbox(chackboxItem)
+  label.checkbox
+    input(type="checkbox" id=chackboxItem.id name=chackboxItem.id checked=chackboxItem.status)
+    span=chackboxItem.title
+    span.checkmark
+
         
