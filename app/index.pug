@@ -1,8 +1,22 @@
 doctype html
 html(lang="uk")
   include partials/head
+  include partials/mixin
   body
     include partials/header
+    .page
+      .wrapper
+        .row
+          .column-laptop-3-4
+            .row
+              each i in '123456'
+                .column-laptop-1-3
+                  |flowers pics here
+          .column-laptop-1-4
+            |filter
+      .wrapper
+        .row
+          each i in '123'
+            .column-phablet-1-2.column-laptop-1-3.m-b-30
+              include partials/article-news
     include partials/footer
-
-
