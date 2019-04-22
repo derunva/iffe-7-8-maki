@@ -1,0 +1,52 @@
+.sidebar
+  div 
+    | Button FILTER
+  .mb-30
+  .title
+    | Стоимость
+  include rangeSlider
+  .mb-40
+  .title.mb-15
+    | Букети с
+  .row.section
+    .column-1-2
+      +checkbox(
+        {
+          title: 'Роза',
+          id: 'rose',
+          status: 'checked'
+        }
+      )
+    .column-1-2
+      +checkbox(
+        {
+          title: 'Орхидея',
+          id: 'orch'
+        }
+      )
+    .column-1-2
+      +checkbox(
+        {
+          title: 'Лилия',
+          id: 'Lily'
+        }
+      )
+    .column-1-2
+      +checkbox(
+          {
+            title: 'Гербер',
+            id: 'gerber',
+            status: 'checked'
+          }
+        )
+  .title.mb-15
+    | Кому
+  .row.section
+    .column-1-2
+      +checkbox(
+        {
+          title: 'Мужчина',
+          id: 'rose',
+          status: 'checked'
+        }
+      )
