@@ -1,7 +1,7 @@
 footer.footer
   .footer__top
     .wrapper
-      .row
+      .flex-container
         -
           var links = [["О магазине", "Почему мы?", "Отзывы", "Скидки"],
                         ["Гарантии", "Возврат денежных средств" ,"Корпоративные букеты", "и подарки"],
@@ -12,7 +12,7 @@ footer.footer
               a(href="#").links-block__link #{item}
   .footer__bottom
     .wrapper
-      .row.justify-between
+      .flex-container.justify-between
         .copyright
           |Служба доставки цветов      2016
         .contacts
