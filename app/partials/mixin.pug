@@ -1,27 +1,26 @@
 mixin product(image, description, price, modificator)
   //- modificator : "hit" - add hit  : "new"  -  add new  :  "action" - add action
-  .column-desktop-1-3
-    .product.relative
-      case modificator
-        when "hit"
-          .product__modificator
-            img(src="./img/modificator-hit.png" alt="hit")
-        when "new"
-          .product__modificator
-            img(src="./img/modificator-new.png" alt="new")
-        when "action"
-          .product__modificator
-            img(src="./img/modificator-action.png" alt="action")
-      .product__image
-        img(src="./img/" + image alt="product image")
-      .product__description #{description}
-      .product__price #{price}
-      .product__button
-        |here button
--;       
+  .product.relative
+    case modificator
+      when "hit"
+        .product__modificator
+          img(src="./img/modificator-hit.png" alt="hit")
+      when "new"
+        .product__modificator
+          img(src="./img/modificator-new.png" alt="new")
+      when "action"
+        .product__modificator
+          img(src="./img/modificator-action.png" alt="action")
+    .product__image
+      img(src="./img/" + image alt="product image")
+    .product__description #{description}
+    .product__price #{price}
+    .product__button
+      |here button
 mixin checkbox(chackboxItem)
   label.checkbox
     input(type="checkbox" id=chackboxItem.id name=chackboxItem.id checked=chackboxItem.status)
     span=chackboxItem.title
     span.checkmark
+
         
