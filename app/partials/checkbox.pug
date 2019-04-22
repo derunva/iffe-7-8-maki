@@ -1,0 +1,23 @@
+-
+  var chackboxItemsWith = [
+    {
+      title: 'Роза',
+      id: 'rose',
+      status: 'checked'
+    }
+  ]
+  var chackboxItemsTo = [
+    {
+      title: 'Мужчина',
+      id: 'man',
+      status: 'checked'
+    }
+  ]
+-;
+each item in chackboxItemsWith
+  -;
+  label.checkbox
+    input(type="checkbox" id=item.id name=item.id checked=item.status)
+    span=item.title
+    -;
+    span.checkmark
