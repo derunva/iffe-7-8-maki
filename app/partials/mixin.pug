@@ -1,7 +1,7 @@
 mixin product(image, description, price, modificator)
   //- modificator : "hit" - add hit  : "new"  -  add new  :  "action" - add action
 
-  .product.relative.m-t-30
+  .product.relative.m-b-30
     case modificator
       when "hit"
         .product__modificator
@@ -15,9 +15,13 @@ mixin product(image, description, price, modificator)
     .product__image
       img(src="./img/" + image alt="product image")
     .product__description #{description}
-    .product__price #{price}
+    .product__price
+      -
+        var rndPrice = Math.floor(Math.random() * Math.floor(10000));
+      |#{rndPrice}
     .product__button
-      |here button
+      a(href="#").hover-order
+        |ЗАКАЗАТЬ
 mixin checkbox(chackboxItem)
   label.checkbox
     input(type="checkbox" id=chackboxItem.id name=chackboxItem.id checked=chackboxItem.status)
