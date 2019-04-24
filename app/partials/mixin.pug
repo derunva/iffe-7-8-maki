@@ -35,3 +35,8 @@ mixin addSearch(status)
     -;
 
 
+mixin card(item)
+  a.card(class=item.mod?"card_"+item.mod:'' href="#")
+    picture
+      img(src="img"+item.img alt="")
+    .card__title=item.title
