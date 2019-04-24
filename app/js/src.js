@@ -15,6 +15,27 @@ $(".js-range-slider").ionRangeSlider({
 
 });
 
+
+//  search-block
+var searchButton = $('.search > button');
+var search = $('.search');
+search.each(function(){
+  var currentSearch = $(this);
+  if(!(currentSearch.hasClass('is-active'))){
+    var btn = currentSearch.find('> button');
+    btn.on('click', function(){
+      currentSearch.addClass('is-active')
+    });
+    $(window).click(function(){
+      currentSearch.removeClass('is-active');
+    });
+    currentSearch.click(function(event){
+      event.stopPropagation();
+    });
+  };
+});
+
+
 //checking if target is not one of nodelist elements`
 function check(nodelist, target){
   var result = [].every.call(nodelist, function(item){
@@ -47,3 +68,4 @@ document.querySelector('body').onclick = function(e){
 menuOpener.addEventListener('click', function(){
   topNav.classList.toggle('menu-is-active');
 })
+

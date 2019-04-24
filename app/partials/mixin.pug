@@ -22,5 +22,14 @@ mixin checkbox(chackboxItem)
     input(type="checkbox" id=chackboxItem.id name=chackboxItem.id checked=chackboxItem.status)
     span=chackboxItem.title
     span.checkmark
+    -;
 
-        
+mixin addSearch(status)
+  div(class = 'search' class = status)
+    form.search__form
+      input(type="search" name="search" placeholder="Что вы ищите?")
+      button(type="submit")
+        |o
+    button o
+    -;
+
