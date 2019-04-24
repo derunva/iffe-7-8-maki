@@ -19,3 +19,8 @@ mixin product(image, description, price, modificator)
       .product__button
         |here button
         
+mixin card(item)
+  a.card(class=item.mod?"card_"+item.mod:'' href="#")
+    picture
+      img(src="img"+item.img alt="")
+    .card__title=item.title
