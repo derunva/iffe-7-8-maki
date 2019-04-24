@@ -1,0 +1,18 @@
+-
+  var news_item_tmp = news_item || {}
+  var article = {
+    image: news_item_tmp.image || "img/news/1.png",
+    data : news_item_tmp.date || "01.01.16",
+    text : news_item_tmp.text || "С Новым годом 2016!"
+  }
+.news-item
+  .news-item__img
+    img(src="img/news/1.png")
+    .img-hover
+      .img-hover__center
+        a(href="#")
+          span Читать... 
+  .news-item__date
+    span 01.01.16
+  .news-item__text
+    span С Новым годом 2016!
