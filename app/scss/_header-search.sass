@@ -26,6 +26,9 @@
     button
       @extend %header-search-btn
 
+      &:focus
+        outline: none
+
     .header-search-button
       z-index: 4
 
@@ -35,7 +38,7 @@
 
 
 .search-is-active
-  left: -200px !important
+  left: -199px !important
   width: 200px !important
 
 .submit-btn-is-active
@@ -47,5 +50,5 @@
     form
 
   .search-is-active
-    left: 38px !important
+    left: 37px !important
     width: 200px !important
