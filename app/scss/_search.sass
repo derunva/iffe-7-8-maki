@@ -1,16 +1,48 @@
 .search
+  position: relative
   &__form
     display: flex
-  & input[name="search-req"]
-    padding: 13px 11px
-    border: 1px solid #e1e1e1
-    color: #999999
-    outline: none
+    justify-content: flex-end
+    position: relative
+    height: 40px
     width: 100%
-  & button
+    overflow: hidden
+    & input
+      position: absolute
+      top: 0
+      right: -100%
+      transition: right  ease 0.7s
+      padding: 0 10px
+      border: 1px solid #e1e1e1
+      color: #999999
+      outline: none
+      width: calc(100% - 40px)
+      height: 100%
+      z-index: 1
+    & button
+      position: relative
+      width: 40px
+      background: white
+      border: 1px solid #ffa8a8
+      cursor: pointer
+      outline: none
+      z-index: 2
+  & > button
+    position: absolute
+    opacity: 0
+    right: 0
+    top: 0
     width: 40px
-    background: none
-    border: 1px solid #ffa8a8
-    cursor: pointer
-    outline: none
+    height: 40px
+    z-index: 3
+  &.is-active
+    .search__form
+      & input
+        right: 40px
+    & > button
+      display: none
+
+
+
+
 
