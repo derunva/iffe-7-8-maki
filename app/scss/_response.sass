@@ -1,0 +1,40 @@
+.response
+  .info
+    display: flex
+    justify-content: space-between
+    align-items: center
+  &__title
+    font-size: 15px
+  &__star
+    .stars
+      display: flex
+      .star
+        color: #ff7575
+        font-size: 25px
+      .star::before
+        content: '\2606'
+        cursor: pointer
+      .star:hover::before
+        content: '\2605'
+      .star.rated::before
+        content: '\2605'
+  &__form
+    margin-bottom: $gutter*2
+    form
+      display: flex
+      justify-content: center
+      flex-direction: column
+      align-items: center
+      width: 100%
+    textarea
+      height: 80px
+      width: 100%
+      resize: none
+    input
+      background-color: #fff
+      font-size: 15px
+      border: 1px solid #999999
+      padding: 15px 25px
+      max-width: 135px
+      margin-top: $gutter
+      text-transform: uppercase
