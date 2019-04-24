@@ -8,11 +8,14 @@
 .justify-content
   display: flex
 .m-b
-
+   @for $i from 1 through 5
+    &-#{$i*$v-step}
+      margin:
+        bottom: 1px * $i*$v-step
 .row
   display: flex
   flex-wrap: wrap
-  margin: 0 #{-$gutter/2}
+  margin: 0 #{$gutter/2*-1}
 .column
   &-1-2
     max-width: 50%

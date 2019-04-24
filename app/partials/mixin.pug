@@ -1,5 +1,6 @@
 mixin product(image, description, price, modificator)
   //- modificator : "hit" - add hit  : "new"  -  add new  :  "action" - add action
+
   .product.relative
     case modificator
       when "hit"
@@ -33,3 +34,9 @@ mixin addSearch(status)
     button o
     -;
 
+
+mixin card(item)
+  a.card(class=item.mod?"card_"+item.mod:'' href="#")
+    picture
+      img(src="img"+item.img alt="")
+    .card__title=item.title
