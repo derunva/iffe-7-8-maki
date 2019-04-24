@@ -1,0 +1,51 @@
+.header
+  min-height: 580px
+  background-image: url('../img/header-bg.png')
+  background-size: cover
+
+  &__top
+    background-color: white
+    border-bottom: 1px solid #fbfbf9
+
+  &__mid
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, #ffffff 100%)
+    min-height: 350px
+
+.top-nav
+  transition: .3s ease all
+  ul
+    list-style-type: none
+    display: flex
+
+
+
+    li
+
+      a
+        display: block
+        padding: 25px
+        text-decoration: none
+        color: #333333
+        font-size: 17px
+
+.menu-is-active
+
+@media (max-width: 768px)
+  .top-nav
+    position: absolute
+    top: calc(70px * -5)
+
+    ul
+      flex-direction: column
+
+  .menu-is-active
+    top: 0
+    background-color: white
+    z-index: 8
+    width: 100%
+
+.m-t-30
+  margin-top: 30px
+
+.m-a
+  margin: auto

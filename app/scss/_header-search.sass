@@ -1,0 +1,51 @@
+%header-search-btn
+  position: absolute
+  width: 39px
+  height: 38px
+  border: none
+  cursor: pointer
+
+.header-search
+  display: flex
+  justify-content: flex-end
+  form
+    display: flex
+    position: relative
+    margin: 16px 0
+
+
+
+    input[type="search"]
+      position: absolute
+      width: 0
+      left: 10px
+      padding: 10px
+      transition: .3s ease all
+      height: 38px
+
+    button
+      @extend %header-search-btn
+
+    .header-search-button
+      z-index: 4
+
+    .header-submit-button
+      z-index: 3
+
+
+
+.search-is-active
+  left: -200px !important
+  width: 200px !important
+
+.submit-btn-is-active
+  z-index: 5
+
+@media (max-width: 1280px)
+  .header-search
+    justify-content: flex-start
+    form
+
+  .search-is-active
+    left: 38px !important
+    width: 200px !important
