@@ -1,17 +1,16 @@
 .pagination
   font-size: 0
-  display: block
-  height: 100px
+  display: flex
+  justify-content: center
+  align-items: center
+  list-style-type: none
   li
-    display: inline-block
     font-size: 15px
     margin: 0 2.5px
     &:first-child
       margin-left: 0    
     &:last-child
       margin-right: 0
-    &>*
-      
     a
       padding: 11px 16px
       color: #333333
@@ -19,12 +18,14 @@
       transition: background-color .15s
       border: 1px solid #959595
       transition: .15s
+      display: inline-block
       &:hover
         border-color: #ffa6a6
-
-    span.active
-      padding: 11px 16px
-      display: inline-block
-      background: linear-gradient(to top, #ff9999 0%,#ffaaaa 100%);
-      border: 1px solid #ffa6a6
+    span
+      cursor: default
+      padding: 11px 16px 
+      border: 1px solid transparent
       color: #fff
+      background: linear-gradient(to top, #ff9999 0%,#ffaaaa 100%)
+      &.active
+      border-color: #ffa6a6
