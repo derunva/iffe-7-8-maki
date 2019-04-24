@@ -1,1 +1,32 @@
+footer.footer
+  .footer__top
+    .wrapper
+      .flex-container
+        -
+          var links = [["О магазине", "Почему мы?", "Отзывы", "Скидки"],
+                        ["Гарантии", "Возврат денежных средств" ,"Корпоративные букеты", "и подарки"],
+                        ["Доставка", "Доставка в праздничные дни", "Спецпредложения", "к праздникам"]];
+        each block in links
+          .links-block.m-r-140
+            each item in block
+              a(href="#").links-block__link #{item}
+  .footer__bottom
+    .wrapper
+      .flex-container.justify-between.base-line
+        .copyright
+          |Служба доставки цветов      2016
+        .contacts
+          .contacts__phone.m-r-10
+            a(href="tel:83515672146")
+              i.fas.fa-phone
+              |8 (351) 
+              span
+                |567 21 46
+          .contacts__mail
+            a(href="email:buket@mail.ru")
+              i.fas.fa-envelope
+              |e-mail: buket@mail.ru
+            
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js')
 script(src='js/src.js')

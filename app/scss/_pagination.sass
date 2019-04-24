@@ -1,0 +1,30 @@
+.pagination
+  font-size: 0
+  display: block
+  height: 100px
+  li
+    display: inline-block
+    font-size: 15px
+    margin: 0 2.5px
+    &:first-child
+      margin-left: 0    
+    &:last-child
+      margin-right: 0
+    &>*
+      
+    a
+      padding: 11px 16px
+      color: #333333
+      text-decoration: none
+      transition: background-color .15s
+      border: 1px solid #959595
+      transition: .15s
+      &:hover
+        border-color: #ffa6a6
+
+    span.active
+      padding: 11px 16px
+      display: inline-block
+      background: linear-gradient(to top, #ff9999 0%,#ffaaaa 100%);
+      border: 1px solid #ffa6a6
+      color: #fff
