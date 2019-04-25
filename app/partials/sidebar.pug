@@ -1,87 +1,76 @@
+-
+  var makiWith = [
+    {
+      title: 'Роза',
+      id: 'rose',
+      status: 'checked'
+    },
+    {
+      title: 'Орхидея',
+      id: 'orch'
+    },
+    {
+      title: 'Лилия',
+      id: 'Lily'
+    },
+    {
+      title: 'Гербер',
+      id: 'gerber',
+      status: 'checked'
+    }
+  ]
+-;
+-
+  var makiWho = [
+    {
+      title: 'Мужчина',
+      id: 'man',
+      status: 'checked'
+    },
+    {
+      title: 'Ребенок',
+      id: 'child',
+      status: 'checked'
+    },
+    {
+      title: 'Женщина',
+      id: 'woman'
+    },
+    {
+      title: 'Семья',
+      id: 'family'
+    }
+  ]
+  // ----------------------------------------------------------------------
+-;
+
+
 .sidebar
-  div
+  div.m-b-30
     | Button FILTER
   .filter
     .row
       section.column-phablet-1-2.column-laptop-1
-        
-        .m-b-30
-        .title
-          | Стоимость
+        h2.title Стоимость
         include rangeSlider
         .m-b-40
       section.column-phablet-1-2.column-laptop-1
-        .title.m-b-20
-          | Букети с
+        h2.title.m-b-20 Букети с
         .row
-          .column-1-2
-            +checkbox(
-              {
-                title: 'Роза',
-                id: 'rose',
-                status: 'checked'
-              }
-            )
-          .column-1-2
-            +checkbox(
-              {
-                title: 'Орхидея',
-                id: 'orch'
-              }
-            )
-          .column-1-2
-            +checkbox(
-              {
-                title: 'Лилия',
-                id: 'Lily'
-              }
-            )
-          .column-1-2
-            +checkbox(
-                {
-                  title: 'Гербер',
-                  id: 'gerber',
-                  status: 'checked'
-                }
-              )
+          each item in makiWith
+            -;
+            .column-1-2.m-b-10
+              +checkbox(item)
         .m-b-40
-        .title.m-b-20
-          | Кому
-        .row.m-b-40
-          .column-1-2
-            +checkbox(
-              {
-                title: 'Мужчина',
-                id: 'man',
-                status: 'checked'
-              }
-            )
-          .column-1-2
-            +checkbox(
-              {
-                title: 'Ребенок',
-                id: 'child',
-                status: 'checked'
-              }
-            )
-          .column-1-2
-            +checkbox(
-              {
-                title: 'Женщина',
-                id: 'woman'
-              }
-            )
-          .column-1-2
-            +checkbox(
-              {
-                title: 'Семья',
-                id: 'family'
-              }
-            )
+        h2.title.m-b-20 Кому
+        .row
+          each item in makiWho
+            -;
+            .column-1-2.m-b-10
+              +checkbox(item)
       section.column-phablet-1-2.column-laptop-1
         .m-b-40
-        .title.m-b-20
-          | Поиск
+        h2.title.m-b-20 Поиск
         +addSearch('is-active')
         .m-b-40
 
