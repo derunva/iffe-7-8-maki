@@ -1,3 +1,4 @@
+$(".xzoom, .xzoom-gallery").xzoom({tint: '#333', Xoffset: 15});
 $(".js-range-slider").ionRangeSlider({
   type: "double",
   min: 1000,
@@ -98,7 +99,8 @@ document.querySelector('body').onclick = function(e){
   };
 };
 
-menuOpener.addEventListener('click', function(){
+/*menuOpener.addEventListener('click', function(){
   topNav.classList.toggle('menu-is-active');
-})
+})*/
+
 
