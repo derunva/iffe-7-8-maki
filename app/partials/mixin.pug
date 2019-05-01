@@ -19,7 +19,7 @@ mixin product(image, description, price, modificator)
       .product__price
         -
           var rndPrice = Math.floor(Math.random() * Math.floor(10000));
-        |#{rndPrice}
+        |#{rndPrice} #{" руб."}
     .product__button
       a(href="#").hover-order
         |ЗАКАЗАТЬ
