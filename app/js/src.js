@@ -32,7 +32,7 @@ function addListeners(){
       console.log('Rating is now', idx+1);
       setRating();
     }).bind(window,index) );
-  });  
+  });
 }
 
 function setRating(){
@@ -99,9 +99,9 @@ document.querySelector('body').onclick = function(e){
   };
 };
 
-/*menuOpener.addEventListener('click', function(){
+menuOpener.addEventListener('click', function(){
   topNav.classList.toggle('menu-is-active');
-})*/
+});
 
 
 // show-filter
