@@ -104,7 +104,7 @@ document.querySelector('body').onclick = function(e){
 })*/
 
 
-// show-filter
+// show-filterr
 var filterBtn = $('.filter__button');
 var filter = $('.filter');
 console.log(filter);
