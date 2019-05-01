@@ -104,3 +104,11 @@ document.querySelector('body').onclick = function(e){
 })*/
 
 
+// show-filter
+var filterBtn = $('.filter__button');
+var filter = $('.filter');
+console.log(filter);
+filterBtn.on('click', function(){
+  console.log(filter);
+  filter.toggleClass('is-active')
+});
