@@ -1,4 +1,8 @@
 .product-img
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
   .xzoom
     box-shadow: none
   .xzoom-thumbs 
@@ -38,8 +42,8 @@ li
     font-size: 13px
     position: relative
   &__text:before 
-    bottom: 72px
-    //content: url(../img/arrow.png)
+    top: -12px
+    content: url(../img/arrow.png)
     position: absolute
     right: 105px
     display: block
@@ -102,7 +106,7 @@ li
   border-bottom: 1px solid #999999
   color: #999999
 .read-more-state:checked ~ .read-more-trigger:before 
-  content: 'Скрить'
+  content: 'Скрыть'
   border-bottom: 1px solid #999999
   color: #999999
 .read-more-trigger 
