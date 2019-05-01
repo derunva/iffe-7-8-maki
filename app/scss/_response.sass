@@ -1,4 +1,53 @@
+.product-img
+  .xzoom
+    box-shadow: none
+  .xzoom-thumbs 
+    display: flex
+    justify-content: space-between
+    margin: 10px 0
+  .xzoom-gallery, .xzoom-gallery2, .xzoom-gallery3, .xzoom-gallery4, .xzoom-gallery5
+    margin: 0
+    border: none
+.comments-block__text
+  display: flex
+  justify-content: space-between
+  font-weight: bold
+  font-size: 15px
+ul
+  li
+    list-style: none
+.comment
+  &__info
+    display: flex
+    justify-content: space-between
+    margin: 25px 0 12px
+    &-text
+      font-size: 13px
+      span
+        color: #999999
+      p
+        color: #666666
+    &-star
+      display: flex
+      color: #ff7575
+      font-size: 13px
+      padding-top: 20px
+  &__text
+    background-color: #f0f0f0
+    padding: 20px
+    color: #666666
+    font-size: 13px
+    position: relative
+  &__text:before 
+    bottom: 72px
+    //content: url(../img/arrow.png)
+    position: absolute
+    right: 105px
+    display: block
+    width: 0
+    z-index: 0
 .response
+  margin-top: 30px
   .info
     display: flex
     justify-content: space-between
@@ -38,3 +87,31 @@
       max-width: 135px
       margin-top: $gutter
       text-transform: uppercase
+.read-more-state 
+  display: none
+.read-more-target 
+  opacity: 0
+  max-height: 0
+  font-size: 0
+  transition: .25s ease
+.read-more-state:checked ~ .read-more-wrap .read-more-target 
+  opacity: 1
+  font-size: inherit
+  max-height: 999em
+.read-more-state ~ .read-more-trigger:before 
+  content: 'Показать еще'
+  border-bottom: 1px solid #999999
+  color: #999999
+.read-more-state:checked ~ .read-more-trigger:before 
+  content: 'Скрить'
+  border-bottom: 1px solid #999999
+  color: #999999
+.read-more-trigger 
+  width: 100%
+  text-align: center
+  cursor: pointer
+  display: inline-block
+  padding: 0 .5em
+  color: #666
+  font-size: 13px
+  line-height: 2
