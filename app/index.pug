@@ -8,8 +8,8 @@ html(lang="uk")
     .page
       .wrapper
         .row
-          .column-laptop-3-4.column-page
-            .row
+          .column-laptop-3-4
+            .row.m-b-20
               .column-laptop-1-3.column-tablet-1-2.bottom-line
                 +product("product-1.png", "Новогодний подарок", "price", "hit")
               .column-laptop-1-3.column-tablet-1-2.bottom-line
@@ -20,7 +20,6 @@ html(lang="uk")
                 .column-laptop-1-3.column-tablet-1-2.bottom-line
                   +product("product-"+i+".png", "description", "price")
               -;
-
             include partials/pagination
           .column-laptop-1-4.column-sidebar
             include partials/sidebar
