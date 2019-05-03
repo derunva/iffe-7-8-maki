@@ -128,8 +128,6 @@ $(function () {
 });
 
 
-=======
-
 //slider
 
 $('.slider-container').slick({
@@ -168,3 +166,13 @@ $('.slider-container').slick({
   ]
 });
 
+window.counter
+$('.product__button a').on('click', function(e){
+  e.preventDefault()
+  var price = $(this).data("price")
+  price+=
+    $('#price').text(price)
+  var currentNum = $('#counter').text()
+  currentNum++
+    $('#counter').text(currentNum)
+})
