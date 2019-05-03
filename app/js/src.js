@@ -113,7 +113,16 @@ function setRating(){
         star.classList.remove('rated');
         console.log('removed rated on', index );
       }
-    });
+    });    
   }
 }
+
+$(function () {
+    $(".comment").slice(0, 2).show();
+    $("#loadMore").on('click', function (e) {
+        e.preventDefault();
+        $(".comment:hidden").slice(0, 2).slideDown();        
+    });
+});
+
 
