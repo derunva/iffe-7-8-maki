@@ -115,5 +115,3 @@ filterBtn.on('click', function() {
   console.log(filter);
   filter.toggleClass('is-active')
 });
-
-var deliveryReceiver = $('.delivery__receiver input')

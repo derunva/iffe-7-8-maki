@@ -46,31 +46,32 @@
 
 
 .sidebar
+
   .filter__button.m-b-30
   .filter
     .row
-      section.column-phablet-1.column-laptop-1
+      section.column-phablet-1.column-laptop-1.m-b-40
         .title.title_2 Стоимость
-        include rangeSlider
-        .m-b-40
-      section.column-phablet-1-2.column-laptop-1
+        include rangeSlider      
+      section.column-phablet-1-2.column-laptop-1.m-b-40
         .title.title_2.m-b-20 Букети с
         .row
           each item in makiWith
             -;
             .column-1-2.m-b-10
               +checkbox(item)
-        .m-b-40
-      section.column-phablet-1-2.column-laptop-1
+        
+      section.column-phablet-1-2.column-laptop-1.m-b-40
+
         .title.title_2.m-b-20 Кому
         .row
           each item in makiWho
             -;
             .column-1-2.m-b-10
-              +checkbox(item)
+              +checkbox(item) 
   .row
     section.column-phablet-1-2.column-laptop-1
-      .m-b-40
+      
       .title.title_2.m-b-20 Поиск
       +addSearch('is-active')
       .m-b-40

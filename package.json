@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "gulp imgCopy && gulp jsBuild  && gulp cssBuild && gulp htmlBuild && gulp serve",
+    "serve": "gulp imgCopy && gulp slickCopy && gulp jsBuild  && gulp cssBuild && gulp htmlBuild && gulp serve",
     "server": "gulp serve"
   },
   "author": "",

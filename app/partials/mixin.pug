@@ -23,7 +23,7 @@ mixin product(image, description, price, modificator)
     .product__button
       a(href="#").hover-order
         |ЗАКАЗАТЬ
-        
+
 mixin checkbox(chackboxItem)
   label.checkbox
     input(type="checkbox" id=chackboxItem.id name=chackboxItem.id checked=chackboxItem.status)
@@ -36,8 +36,8 @@ mixin addSearch(status)
     form.search__form
       input(type="search" name="search" placeholder="Что вы ищите?")
       button(type="submit")
-        |o
-    button o
+        .btn-search
+    button
     -;
 
 
