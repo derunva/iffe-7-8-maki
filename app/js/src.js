@@ -99,9 +99,9 @@ document.querySelector('body').onclick = function(e){
   };
 };
 
-/*menuOpener.addEventListener('click', function(){
+menuOpener.addEventListener('click', function(){
   topNav.classList.toggle('menu-is-active');
-})*/
+})
 
 
 // show-filterr
