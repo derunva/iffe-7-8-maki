@@ -1,2 +1,11 @@
-form.delivery-form
-  
+form(action="#").delivery
+  .delivery__receiver
+    +checkbox({
+      title: "Я получу заказ",
+      id: "checkbox1"
+    }).checkbox-is-active
+    +checkbox({
+      title: "Отправить заказ адресату",
+      id: "checkbox2",
+      status: 'checked'
+    })
