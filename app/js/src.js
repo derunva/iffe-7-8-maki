@@ -115,3 +115,18 @@ filterBtn.on('click', function() {
   console.log(filter);
   filter.toggleClass('is-active')
 });
+
+
+// TODO: revork this script(checked revoved)
+var deliveryCheckers = $('.delivery__checkbox');
+if(deliveryCheckers){
+  [].forEach.call(deliveryCheckers, function(item){
+    item.addEventListener('click', function(){
+      [].forEach.call(deliveryCheckers, function(elem, i){
+        elem.classList.remove('checkbox-is-active');
+      });
+      item.classList.add('checkbox-is-active');
+      item.querySelector('input').setAttribute('checked', 'checked');
+    })
+  })
+}
