@@ -132,8 +132,21 @@
   margin-bottom: 40px
 
 .delivery-form
+  display: flex
 
   &__title
     font-size: 23px
     font-weight: 700
     padding: 10px
+
+@media (max-width: 768px)
+  .delivery
+
+    &>div
+      flex-direction: column
+
+    &__price, &__total, &__postcard
+      flex-direction: row !important
+
+    textarea
+      width: 100%

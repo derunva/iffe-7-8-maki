@@ -79,15 +79,15 @@ function check(nodelist, target) {
     return item != target;
   });
   return result;
-};
+}
 
-var searchButton = document.querySelector('.header-search-button');
+var headerSearchButton = document.querySelector('.header-search-button');
 var submitButton = document.querySelector('.header-submit-button');
 var headerSearch = document.querySelector('.header-search-input');
 var menuOpener = document.querySelector('.menu-opener');
 var topNav = document.querySelector('.top-nav');
 
-searchButton.addEventListener('click', function() {
+headerSearchButton.addEventListener('click', function() {
   headerSearch.classList.add('search-is-active');
   submitButton.classList.add('submit-btn-is-active');
 });
@@ -96,10 +96,10 @@ document.querySelector('body').onclick = function(e) {
   if (e.target != $('.header-search form') && check($('.header-search form *'), e.target)) {
     headerSearch.classList.remove('search-is-active');
     submitButton.classList.remove('submit-btn-is-active');
-  };
+  }
   if (check($('.top-nav *'), e.target) && check($('.menu-opener *'), e.target) && e.target != menuOpener) {
     topNav.classList.remove('menu-is-active');
-  };
+  }
 };
 
 menuOpener.addEventListener('click', function() {
@@ -117,12 +117,12 @@ filterBtn.on('click', function() {
 });
 
 
-// TODO: revork this script(checked revoved)
+// TODO: revork this script(checked on click)
 var deliveryCheckers = $('.delivery__checkbox');
 if(deliveryCheckers){
   [].forEach.call(deliveryCheckers, function(item){
     item.addEventListener('click', function(){
-      [].forEach.call(deliveryCheckers, function(elem, i){
+      [].forEach.call(deliveryCheckers, function(elem){
         elem.classList.remove('checkbox-is-active');
       });
       item.classList.add('checkbox-is-active');
@@ -130,3 +130,45 @@ if(deliveryCheckers){
     })
   })
 }
+
+// creates decoration line left of the element(only order.html)
+// usage: inside flex container with decoratable elemet;
+// decoratable element should have ".to-decorate" class
+function setDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var orderDecorators = document.querySelectorAll('.order-decorator');
+    [].forEach.call(orderDecorators, function(decorator){
+      var toDecorate = decorator.parentElement.querySelector('.to-decorate');
+      if(!toDecorate){
+        return false;
+      }
+      var decorHeight = toDecorate.clientHeight - 30;
+      var decoString = "";
+      for (var i = 0; i < Math.floor(decorHeight / 10); i++) {
+        decoString += "/\n"
+      }
+      var decoElement = document.createElement('div');
+      decoElement.classList.add('decoLine');
+      decoElement.appendChild(document.createTextNode(decoString));
+      decorator.appendChild(decoElement)
+    })
+  }
+}
+
+// delete current decoration line (at order.html)
+// needs to reinitialize decoration line
+function removeDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var decoratorLines = document.querySelectorAll('.decoLine');
+    [].forEach.call(decoratorLines, function(item){
+      item.parentNode.removeChild(item);
+    })
+  }
+}
+
+//decoration initialization
+setDecorator();
+window.addEventListener('resize', function(){
+  removeDecorator();
+  setDecorator();
+});
