@@ -1,3 +1,4 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 $(".xzoom, .xzoom-gallery").xzoom({tint: '#333', Xoffset: 15});
 $(".js-range-slider").ionRangeSlider({
   type: "double",
@@ -15,39 +16,6 @@ $(".js-range-slider").ionRangeSlider({
   }
 
 });
-
-document.addEventListener('DOMContentLoaded', function(){
-  addListeners();
-  setRating(); //based on value inside the div
-});
-
-function addListeners(){
-  var stars = document.querySelectorAll('.star');
-  [].forEach.call(stars, function(star, index){
-    star.addEventListener('click', (function(idx){
-      console.log('adding rating on', index);
-      document.querySelector('.stars').setAttribute('data-rating',  idx + 1);
-      document.querySelector('form .hidden-rate').value = idx + 1;
-
-      console.log('Rating is now', idx+1);
-      setRating();
-    }).bind(window,index) );
-  });  
-}
-
-function setRating(){
-  var stars = document.querySelectorAll('.star');
-  var rating = parseInt( document.querySelector('.stars').getAttribute('data-rating') );
-  [].forEach.call(stars, function(star, index){
-    if(rating > index){
-      star.classList.add('rated');
-      console.log('added rated on', index );
-    }else{
-      star.classList.remove('rated');
-      console.log('removed rated on', index );
-    }
-  });
-}
 
 
 //  search-block
@@ -102,4 +70,104 @@ document.querySelector('body').onclick = function(e){
 /*menuOpener.addEventListener('click', function(){
   topNav.classList.toggle('menu-is-active');
 })*/
+
+
+
+
+// show-filterr
+var filterBtn = $('.filter__button');
+var filter = $('.filter');
+console.log(filter);
+filterBtn.on('click', function(){
+  console.log(filter);
+  filter.toggleClass('is-active')
+});
+
+
+},{}]},{},[1])
+
+
+document.addEventListener('DOMContentLoaded', function(){
+  addListeners();
+  setRating(); //based on value inside the div
+});
+function addListeners(){
+  var stars = document.querySelectorAll('.star');
+  [].forEach.call(stars, function(star, index){
+    star.addEventListener('click', (function(idx){
+      console.log('adding rating on', index);
+      document.querySelector('.stars').setAttribute('data-rating',  idx + 1);
+      document.querySelector('form .hidden-rate').value = idx + 1;
+
+      console.log('Rating is now', idx+1);
+      setRating();
+    }).bind(window,index) );
+  });  
+}
+function setRating(){
+  var stars = document.querySelectorAll('.star');
+  if(!stars.length){
+    return false
+    var rating = parseInt( document.querySelector('.stars').getAttribute('data-rating') );
+    [].forEach.call(stars, function(star, index){
+      if(rating > index){
+        star.classList.add('rated');
+        console.log('added rated on', index );
+      }else{
+        star.classList.remove('rated');
+        console.log('removed rated on', index );
+      }
+    });    
+  }
+}
+
+$(function () {
+    $(".comment").slice(0, 2).show();
+    $("#loadMore").on('click', function (e) {
+        e.preventDefault();
+        $(".comment:hidden").slice(0, 2).slideDown();        
+    });
+});
+
+
+
+
+//slider
+
+$('.slider-container').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+
 

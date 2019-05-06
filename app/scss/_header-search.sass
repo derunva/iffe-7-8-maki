@@ -4,6 +4,7 @@
   height: 38px
   border: none
   cursor: pointer
+  left: -40px
 
 .header-search
   display: flex
@@ -13,42 +14,52 @@
     position: relative
     margin: 16px 0
 
-
-
     input[type="search"]
       position: absolute
       width: 0
-      left: 10px
+      left: -30px
       padding: 10px
       transition: .3s ease all
       height: 38px
 
-    button
-      @extend %header-search-btn
-
       &:focus
         outline: none
 
+    button
+      @extend %header-search-btn
+      &:focus
+        outline: none
+      background-color: #fcfcfb
+
     .header-search-button
       z-index: 4
-
+      @extend %header-search-btn
+      
     .header-submit-button
       z-index: 3
 
 
 
 .search-is-active
-  left: -199px !important
+  left: -239px !important
   width: 200px !important
 
 .submit-btn-is-active
-  z-index: 5
+  z-index: 5 !important
 
-@media (max-width: 1280px)
+@media (max-width: 768px)
   .header-search
-    justify-content: flex-start
+    position: absolute
+    top: 15px
+    right: 25px
     form
 
-  .search-is-active
-    left: 37px !important
-    width: 200px !important
+
+// @media (max-width: 1280px)
+//   .header-search
+//     justify-content: flex-end
+//     form
+
+  // .search-is-active
+  //   left: 37px !important
+  //   width: 200px !important
