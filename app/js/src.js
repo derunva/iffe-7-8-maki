@@ -67,9 +67,9 @@ document.querySelector('body').onclick = function(e){
   };
 };
 
-/*menuOpener.addEventListener('click', function(){
+menuOpener.addEventListener('click', function(){
   topNav.classList.toggle('menu-is-active');
-})*/
+})
 
 
 
@@ -102,7 +102,7 @@ function addListeners(){
       console.log('Rating is now', idx+1);
       setRating();
     }).bind(window,index) );
-  });  
+  });
 }
 function setRating(){
   var stars = document.querySelectorAll('.star');
@@ -117,7 +117,7 @@ function setRating(){
         star.classList.remove('rated');
         console.log('removed rated on', index );
       }
-    });    
+    });
   }
 }
 
@@ -125,11 +125,9 @@ $(function () {
     $(".comment").slice(0, 2).show();
     $("#loadMore").on('click', function (e) {
         e.preventDefault();
-        $(".comment:hidden").slice(0, 2).slideDown();        
+        $(".comment:hidden").slice(0, 2).slideDown();
     });
 });
-
-
 
 
 //slider
@@ -170,4 +168,59 @@ $('.slider-container').slick({
   ]
 });
 
+// TODO: revork this script(checked on click)
+var deliveryCheckers = $('.delivery__checkbox');
+if(deliveryCheckers){
+  [].forEach.call(deliveryCheckers, function(item){
+    item.addEventListener('click', function(){
+      [].forEach.call(deliveryCheckers, function(elem){
+        elem.classList.remove('checkbox-is-active');
+      });
+      item.classList.add('checkbox-is-active');
+      item.querySelector('input').setAttribute('checked', 'checked');
+    })
+  })
+}
+
+// creates decoration line left of the element(only order.html)
+// usage: inside flex container with decoratable elemet;
+// decoratable element should have ".to-decorate" class
+function setDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var orderDecorators = document.querySelectorAll('.order-decorator');
+    [].forEach.call(orderDecorators, function(decorator){
+      var toDecorate = decorator.parentElement.querySelector('.to-decorate');
+      if(!toDecorate){
+        return false;
+      }
+      var decorHeight = toDecorate.clientHeight - 40;
+      var decoString = "";
+      for (var i = 0; i < Math.floor(decorHeight / 10); i++) {
+        decoString += "/\n"
+      }
+      var decoElement = document.createElement('div');
+      decoElement.classList.add('decoLine');
+      decoElement.appendChild(document.createTextNode(decoString));
+      decorator.appendChild(decoElement)
+    })
+  }
+}
+
+// delete current decoration line (at order.html)
+// needs to reinitialize decoration line
+function removeDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var decoratorLines = document.querySelectorAll('.decoLine');
+    [].forEach.call(decoratorLines, function(item){
+      item.parentNode.removeChild(item);
+    })
+  }
+}
+
+//decoration initialization
+setDecorator();
+window.addEventListener('resize', function(){
+  removeDecorator();
+  setDecorator();
+});
 
