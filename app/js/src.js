@@ -142,7 +142,7 @@ function setDecorator(){
       if(!toDecorate){
         return false;
       }
-      var decorHeight = toDecorate.clientHeight - 30;
+      var decorHeight = toDecorate.clientHeight - 40;
       var decoString = "";
       for (var i = 0; i < Math.floor(decorHeight / 10); i++) {
         decoString += "/\n"
