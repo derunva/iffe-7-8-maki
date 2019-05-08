@@ -10,11 +10,9 @@ $(".js-range-slider").ionRangeSlider({
 
   onChange: function (data) {
     console.dir(data.from);
-
     $('.price-from').text(data.from + ' руб.');
     $('.price-to').text(data.to + ' руб.');
   }
-
 });
 
 
@@ -38,7 +36,7 @@ search.each(function(){
 });
 
 
-//checking if target is not one of nodelist elements`
+checking if target is not one of nodelist elements`
 function check(nodelist, target){
   var result = [].every.call(nodelist, function(item){
     return item != target;
@@ -80,6 +78,18 @@ filterBtn.on('click', function(){
   console.log(filter);
   filter.toggleClass('is-active')
 });
+
+// slider
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true,
+  wrapAround: true,
+  fullscreen: true
+});
+
+
+
 
 
 },{}]},{},[1])
@@ -128,43 +138,6 @@ $(function () {
 });
 
 
-//slider
-
-$('.slider-container').slick({
-  dots: true,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});
 
 
 // creates decoration line left of the element(only order.html)
@@ -210,6 +183,14 @@ window.addEventListener('resize', function(){
 });
 
 
+
+
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true
+});
+
 $( function() {
     $( "#datepicker" ).datepicker({
       dateFormat: "d.m.y",
@@ -253,3 +234,4 @@ var deliveryRadios = document.querySelectorAll(".delivery-radio");
     checkReciver();
   })
 })
+
