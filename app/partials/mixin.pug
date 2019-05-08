@@ -47,3 +47,21 @@ mixin card(item)
 
       img(src="img/"+item.img alt="")
     .card__title=item.title
+    
+mixin order-decorator(index)
+  .order-decorator
+    .order-decorator__iteration #{index}
+    
+mixin delivery-radio(title, name, id, checked)
+  -if(checked)
+    .delivery-radio
+      input(type="radio" name=""+name id="" + id checked)
+      label(for="" + id).radiotitle-active #{title}
+        span.radiospan
+          span.radiochecked.radiochecked-active
+  -else
+    .delivery-radio
+      input(type="radio" name="" + name id="" + id)
+      label(for="" + id) #{title}
+        span.radiospan
+          span.radiochecked
