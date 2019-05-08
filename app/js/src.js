@@ -85,7 +85,7 @@ filterBtn.on('click', function(){
 
 document.addEventListener('DOMContentLoaded', function(){
   addListeners();
-  setRating(); //based on value inside the div
+  setRating(); 
 });
 function addListeners(){
   var stars = document.querySelectorAll('.star');
@@ -104,6 +104,7 @@ function setRating(){
   var stars = document.querySelectorAll('.star');
   if(!stars.length){
     return false
+  }
     var rating = parseInt( document.querySelector('.stars').getAttribute('data-rating') );
     [].forEach.call(stars, function(star, index){
       if(rating > index){
@@ -115,7 +116,7 @@ function setRating(){
       }
     });    
   }
-}
+
 
 $(function () {
     $(".comment").slice(0, 2).show();
