@@ -139,19 +139,6 @@ $(function () {
 
 
 
-// TODO: revork this script(checked on click)
-var deliveryCheckers = $('.delivery__checkbox');
-if(deliveryCheckers){
-  [].forEach.call(deliveryCheckers, function(item){
-    item.addEventListener('click', function(){
-      [].forEach.call(deliveryCheckers, function(elem){
-        elem.classList.remove('checkbox-is-active');
-      });
-      item.classList.add('checkbox-is-active');
-      item.querySelector('input').setAttribute('checked', 'checked');
-    })
-  })
-}
 
 // creates decoration line left of the element(only order.html)
 // usage: inside flex container with decoratable elemet;
@@ -197,8 +184,54 @@ window.addEventListener('resize', function(){
 
 
 
+
 $('.main-carousel').flickity({
   // options
   cellAlign: 'left',
   contain: true
 });
+
+$( function() {
+    $( "#datepicker" ).datepicker({
+      dateFormat: "d.m.y",
+      defaultDate: 0,
+      firstDay: 1,
+      setDate: +1
+    });
+  } );
+
+function checkReciver(){
+  var senderFields = document.querySelectorAll(".delivery__sender input");
+  if(document.querySelector('#reciver-self').checked){
+    document.querySelector(".delivery__sender").classList.add('sender-disable');
+    [].forEach.call(senderFields, function(field){
+      field.required = false;
+    })
+  } else {
+      document.querySelector(".delivery__sender").classList.remove('sender-disable');
+      [].forEach.call(senderFields, function(field){
+        field.required = true;
+      })
+  }
+  removeDecorator();
+  setDecorator();
+}
+
+checkReciver();
+
+var deliveryRadios = document.querySelectorAll(".delivery-radio");
+[].forEach.call(deliveryRadios, function(radio){
+  var thisRadio = radio.querySelector('input');
+  thisRadio.addEventListener('click', function(){
+    [].forEach.call(document.querySelectorAll('.radiochecked'), function(elem){
+      elem.classList.remove('radiochecked-active')
+    });
+    [].forEach.call(document.querySelectorAll('.delivery-radio label'), function(elem){
+      elem.classList.remove('radiotitle-active');
+    });
+    radio.querySelector('.radiochecked').classList.add("radiochecked-active");
+    radio.querySelector('label').classList.add("radiotitle-active");
+    checkReciver();
+  })
+})
+
