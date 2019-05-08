@@ -84,7 +84,6 @@ $('.main-carousel').flickity({
   cellAlign: 'left',
   contain: true,
   wrapAround: true,
-  fullscreen: true
 });
 
 
