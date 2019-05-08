@@ -36,7 +36,6 @@ search.each(function(){
 });
  
 
-// checking if target is not one of nodelist elements
 function check(nodelist, target){
   var result = [].every.call(nodelist, function(item){
     return item != target;
@@ -202,6 +201,9 @@ $( function() {
 
 function checkReciver(){
   var senderFields = document.querySelectorAll(".delivery__sender input");
+  if(!senderFields[0]){
+    return false;
+    }
   if(document.querySelector('#reciver-self').checked){
     document.querySelector(".delivery__sender").classList.add('sender-disable');
     [].forEach.call(senderFields, function(field){
@@ -234,4 +236,3 @@ var deliveryRadios = document.querySelectorAll(".delivery-radio");
     checkReciver();
   })
 })
-
