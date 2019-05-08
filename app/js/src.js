@@ -221,3 +221,11 @@ window.addEventListener('resize', function(){
   removeDecorator();
   setDecorator();
 });
+
+
+
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true
+});
