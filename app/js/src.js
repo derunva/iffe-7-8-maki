@@ -38,7 +38,7 @@ search.each(function(){
 });
 
 
-//checking if target is not one of nodelist elements`
+//checking if target is not one of nodelist elements
 function check(nodelist, target){
   var result = [].every.call(nodelist, function(item){
     return item != target;
@@ -67,9 +67,9 @@ document.querySelector('body').onclick = function(e){
   };
 };
 
-/*menuOpener.addEventListener('click', function(){
+menuOpener.addEventListener('click', function(){
   topNav.classList.toggle('menu-is-active');
-})*/
+})
 
 
 // show-filterr
@@ -100,7 +100,7 @@ function addListeners(){
       console.log('Rating is now', idx+1);
       setRating();
     }).bind(window,index) );
-  });  
+  });
 }
 function setRating(){
   var stars = document.querySelectorAll('.star');
@@ -115,7 +115,7 @@ function setRating(){
         star.classList.remove('rated');
         console.log('removed rated on', index );
       }
-    });    
+    });
   }
 }
 
@@ -123,7 +123,7 @@ $(function () {
     $(".comment").slice(0, 2).show();
     $("#loadMore").on('click', function (e) {
         e.preventDefault();
-        $(".comment:hidden").slice(0, 2).slideDown();        
+        $(".comment:hidden").slice(0, 2).slideDown();
     });
 });
 
@@ -166,13 +166,95 @@ $('.slider-container').slick({
   ]
 });
 
+
 window.counter
+var currentPrice = 1000;
 $('.product__button a').on('click', function(e){
   e.preventDefault()
   var price = $(this).data("price")
-  price+=
-    $('#price').text(price)
+  currentPrice+=price
+    $('#price').text(currentPrice)
   var currentNum = $('#counter').text()
   currentNum++
     $('#counter').text(currentNum)
+  var product = $(this).parents('.product');
+  var fake_product = product.clone()
+  var pos = product.offset()
+  console.log(pos)
+  fake_product.css({
+    position: 'absolute',
+    top: pos.top,
+    left: pos.left,
+    'min-height': 'auto',
+    background: '#fff'
+  })
+  var order = $('.cart-button')
+  var order_pos = order.offset()
+  $('body').append(fake_product);
+  console.log(fake_product)
+  fake_product.animate({
+    top: order_pos.top,
+    left: order_pos.left,
+
+  }, 1000, function(){
+    console.log(fake_product.remove())
+    fake_product.remove();
+  })
+
 })
+
+// TODO: revork this script(checked on click)
+var deliveryCheckers = $('.delivery__checkbox');
+if(deliveryCheckers){
+  [].forEach.call(deliveryCheckers, function(item){
+    item.addEventListener('click', function(){
+      [].forEach.call(deliveryCheckers, function(elem){
+        elem.classList.remove('checkbox-is-active');
+      });
+      item.classList.add('checkbox-is-active');
+      item.querySelector('input').setAttribute('checked', 'checked');
+    })
+  })
+}
+
+// creates decoration line left of the element(only order.html)
+// usage: inside flex container with decoratable elemet;
+// decoratable element should have ".to-decorate" class
+function setDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var orderDecorators = document.querySelectorAll('.order-decorator');
+    [].forEach.call(orderDecorators, function(decorator){
+      var toDecorate = decorator.parentElement.querySelector('.to-decorate');
+      if(!toDecorate){
+        return false;
+      }
+      var decorHeight = toDecorate.clientHeight - 40;
+      var decoString = "";
+      for (var i = 0; i < Math.floor(decorHeight / 10); i++) {
+        decoString += "/\n"
+      }
+      var decoElement = document.createElement('div');
+      decoElement.classList.add('decoLine');
+      decoElement.appendChild(document.createTextNode(decoString));
+      decorator.appendChild(decoElement)
+    })
+  }
+}
+
+// delete current decoration line (at order.html)
+// needs to reinitialize decoration line
+function removeDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var decoratorLines = document.querySelectorAll('.decoLine');
+    [].forEach.call(decoratorLines, function(item){
+      item.parentNode.removeChild(item);
+    })
+  }
+}
+
+//decoration initialization
+setDecorator();
+window.addEventListener('resize', function(){
+  removeDecorator();
+  setDecorator();
+});
