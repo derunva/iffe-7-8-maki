@@ -237,11 +237,3 @@ var deliveryRadios = document.querySelectorAll(".delivery-radio");
     checkReciver();
   })
 })
-
-
-if(document.location.pathname == "/"){
-  var productDescriptions = document.querySelectorAll(".product__description");
-  [].forEach.call(productDescriptions, function(item){
-    item.setAttribute('style', 'margin-bottom: -20px')
-  })
-}
