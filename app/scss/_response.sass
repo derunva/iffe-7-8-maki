@@ -76,16 +76,18 @@ li
   &__star
     .stars
       display: flex
-      .star
-        color: #ff7575
+      .star        
         font-size: 25px
+        color: #ff7575
       .star::before
         content: '\2606'
         cursor: pointer
       .star:hover::before
         content: '\2605'
+        color: #ff7575
       .star.rated::before
         content: '\2605'
+
   &__form
     margin-bottom: $gutter*2
     form
