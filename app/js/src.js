@@ -221,6 +221,9 @@ $( function() {
 
 function checkReciver(){
   var senderFields = document.querySelectorAll(".delivery__sender input");
+  if(senderFields){
+    return false;
+    }
   if(document.querySelector('#reciver-self').checked){
     document.querySelector(".delivery__sender").classList.add('sender-disable');
     [].forEach.call(senderFields, function(field){
