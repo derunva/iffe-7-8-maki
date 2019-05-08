@@ -10,11 +10,9 @@ $(".js-range-slider").ionRangeSlider({
 
   onChange: function (data) {
     console.dir(data.from);
-
     $('.price-from').text(data.from + ' руб.');
     $('.price-to').text(data.to + ' руб.');
   }
-
 });
 
 
@@ -39,37 +37,37 @@ search.each(function(){
 
 
 //checking if target is not one of nodelist elements`
-function check(nodelist, target){
-  var result = [].every.call(nodelist, function(item){
-    return item != target;
-  });
-  return result;
-};
+// function check(nodelist, target){
+//   var result = [].every.call(nodelist, function(item){
+//     return item != target;
+//   });
+//   return result;
+// };
 
-var searchButton = document.querySelector('.header-search-button');
-var submitButton = document.querySelector('.header-submit-button');
-var headerSearch = document.querySelector('.header-search-input');
-var menuOpener = document.querySelector('.menu-opener');
-var topNav =  document.querySelector('.top-nav');
+// var searchButton = document.querySelector('.header-search-button');
+// var submitButton = document.querySelector('.header-submit-button');
+// var headerSearch = document.querySelector('.header-search-input');
+// var menuOpener = document.querySelector('.menu-opener');
+// var topNav =  document.querySelector('.top-nav');
 
-searchButton.addEventListener('click', function(){
-  headerSearch.classList.add('search-is-active');
-  submitButton.classList.add('submit-btn-is-active');
-});
+// searchButton.addEventListener('click', function(){
+//   headerSearch.classList.add('search-is-active');
+//   submitButton.classList.add('submit-btn-is-active');
+// });
 
-document.querySelector('body').onclick = function(e){
-  if(e.target != $('.header-search form') && check($('.header-search form *'), e.target)){
-    headerSearch.classList.remove('search-is-active');
-    submitButton.classList.remove('submit-btn-is-active');
-  };
-  if(check($('.top-nav *'), e.target) && check($('.menu-opener *'), e.target) && e.target != menuOpener){
-    topNav.classList.remove('menu-is-active');
-  };
-};
+// document.querySelector('body').onclick = function(e){
+//   if(e.target != $('.header-search form') && check($('.header-search form *'), e.target)){
+//     headerSearch.classList.remove('search-is-active');
+//     submitButton.classList.remove('submit-btn-is-active');
+//   };
+//   if(check($('.top-nav *'), e.target) && check($('.menu-opener *'), e.target) && e.target != menuOpener){
+//     topNav.classList.remove('menu-is-active');
+//   };
+// };
 
-menuOpener.addEventListener('click', function(){
-  topNav.classList.toggle('menu-is-active');
-})
+// menuOpener.addEventListener('click', function(){
+//   topNav.classList.toggle('menu-is-active');
+// })
 
 
 // show-filterr
@@ -80,6 +78,18 @@ filterBtn.on('click', function(){
   console.log(filter);
   filter.toggleClass('is-active')
 });
+
+// slider
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true,
+  wrapAround: true,
+  fullscreen: true
+});
+
+
+
 
 
 },{}]},{},[1])
@@ -128,43 +138,6 @@ $(function () {
 });
 
 
-//slider
-
-$('.slider-container').slick({
-  dots: true,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});
 
 // TODO: revork this script(checked on click)
 var deliveryCheckers = $('.delivery__checkbox');
