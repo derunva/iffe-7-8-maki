@@ -36,7 +36,7 @@ search.each(function(){
 });
 
 
-checking if target is not one of nodelist elements`
+// checking if target is not one of nodelist elements`
 function check(nodelist, target){
   var result = [].every.call(nodelist, function(item){
     return item != target;
@@ -237,4 +237,3 @@ var deliveryRadios = document.querySelectorAll(".delivery-radio");
     checkReciver();
   })
 })
-
