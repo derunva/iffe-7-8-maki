@@ -137,34 +137,6 @@ $(function () {
     });
 });
 
-
-//slider
-
-$('.slider-container').slick({
-  dots: true,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-
-
-
-
 // creates decoration line left of the element(only order.html)
 // usage: inside flex container with decoratable elemet;
 // decoratable element should have ".to-decorate" class

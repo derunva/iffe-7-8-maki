@@ -11,6 +11,22 @@
     }
   ]
 -;
+-
+  var paymentMethodsImages = [
+    {
+      url: '../img/payment-method/wm.png'
+    },
+    {
+      url: '../img/payment-method/yandexm.png'
+    },
+    {
+      url: '../img/payment-method/qiwi.png'
+    },
+    {
+      url: '../img/payment-method/visa.png'
+    }
+  ]
+-;
 
 section.column
   .title.title_3.m-b-20 Оплата
@@ -18,6 +34,8 @@ section.column
     each item in paymentMethod
       +radio(item) 
     -;
-  .payment-methods
-    each item in '1234'
+  .payment-methods.m-b-90
+    each item in paymentMethodsImages
+      a.payment-method(href="#")
+        img(src=item.url, alt="paymentMethodsImage")
       -;
