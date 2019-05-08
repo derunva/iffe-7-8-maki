@@ -34,9 +34,8 @@ search.each(function(){
     });
   };
 });
+ 
 
-
-// checking if target is not one of nodelist elements`
 function check(nodelist, target){
   var result = [].every.call(nodelist, function(item){
     return item != target;
