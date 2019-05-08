@@ -34,7 +34,7 @@ search.each(function(){
     });
   };
 });
- 
+
 
 function check(nodelist, target){
   var result = [].every.call(nodelist, function(item){
@@ -236,3 +236,10 @@ var deliveryRadios = document.querySelectorAll(".delivery-radio");
     checkReciver();
   })
 })
+console.log(document.location.pathname == "/");
+if(document.location.pathname == "/"){
+  var productDescriptions = document.querySelectorAll(".product__description");
+  [].forEach.call(productDescriptions, function(item){
+    item.setAttribute('style', 'margin-bottom: -20px')
+  })
+}
