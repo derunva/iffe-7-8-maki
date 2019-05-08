@@ -1,0 +1,23 @@
+-
+  var paymentMethod = [
+    {
+      title: 'При получении',
+      id: 'uponReceipt'
+    },
+    {
+      title: 'Онлайн',
+      id: 'online',
+      status: 'checked'
+    }
+  ]
+-;
+
+section.column
+  .title.title_3.m-b-20 Оплата
+  form.radio-btns.m-b-40(action="get")
+    each item in paymentMethod
+      +radio(item) 
+    -;
+  .payment-methods
+    each item in '1234'
+      -;

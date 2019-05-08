@@ -127,9 +127,6 @@ $(function () {
     });
 });
 
-
-=======
-
 //slider
 
 $('.slider-container').slick({
