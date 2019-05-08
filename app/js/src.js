@@ -96,7 +96,7 @@ $('.main-carousel').flickity({
 
 document.addEventListener('DOMContentLoaded', function(){
   addListeners();
-  setRating(); 
+  setRating();
 });
 function addListeners(){
   var stars = document.querySelectorAll('.star');
@@ -237,7 +237,8 @@ var deliveryRadios = document.querySelectorAll(".delivery-radio");
     checkReciver();
   })
 })
-console.log(document.location.pathname == "/");
+
+
 if(document.location.pathname == "/"){
   var productDescriptions = document.querySelectorAll(".product__description");
   [].forEach.call(productDescriptions, function(item){
