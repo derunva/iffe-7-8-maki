@@ -28,7 +28,13 @@ gulp.task('imgCopy',async function(){
   gulp.src('./app/img/**/*')
     .pipe(cached('images-1'))
     .pipe( gulp.dest('./dist/img/') )
-  
+
+})
+gulp.task('slickCopy',async function(){
+  gulp.src('./app/slick/*')
+    .pipe( gulp.dest('./dist/slick/') )
+  gulp.src('./app/slick/**/*')
+    .pipe( gulp.dest('./dist/slick/') )
 })
 gulp.task('jsBuild',async function(){
   gulp.src('./app/js/*.js')
@@ -37,7 +43,7 @@ gulp.task('jsBuild',async function(){
     .pipe(cached('js'))
     .pipe(debug())
     .pipe(browserify({
-      
+
     }))
     .pipe( gulp.dest('./dist/js/') )
 })
@@ -66,6 +72,7 @@ gulp.task('cssBuild', async function(){
 
 gulp.task('watcher', async function(){
   gulp.watch(['./app/img/*', './app/img/content/*'], gulp.series('imgCopy'))
+  gulp.watch('./app/slick/*', gulp.series('slickCopy'))
   gulp.watch('./app/scss/*.sass', gulp.series('cssBuild'))
   gulp.watch('./app/js/*.js', gulp.series('jsBuild'))
   gulp.watch(['./app/*.pug','./app/partials/*.pug'], gulp.series('htmlBuild'))
