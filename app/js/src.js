@@ -81,9 +81,9 @@ filterBtn.on('click', function(){
 // slider
 $('.main-carousel').flickity({
   // options
-  cellAlign: 'left',
+  cellAlign: 'center',
   contain: true,
-  wrapAround: true,
+  freeScroll: true
 });
 
 
