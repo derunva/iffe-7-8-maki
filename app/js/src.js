@@ -202,7 +202,7 @@ $( function() {
 
 function checkReciver(){
   var senderFields = document.querySelectorAll(".delivery__sender input");
-  if(senderFields){
+  if(!senderFields[0]){
     return false;
     }
   if(document.querySelector('#reciver-self').checked){
