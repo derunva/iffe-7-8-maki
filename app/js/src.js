@@ -10,11 +10,9 @@ $(".js-range-slider").ionRangeSlider({
 
   onChange: function (data) {
     console.dir(data.from);
-
     $('.price-from').text(data.from + ' руб.');
     $('.price-to').text(data.to + ' руб.');
   }
-
 });
 
 
@@ -38,7 +36,6 @@ search.each(function(){
 });
 
 
-//checking if target is not one of nodelist elements`
 function check(nodelist, target){
   var result = [].every.call(nodelist, function(item){
     return item != target;
@@ -67,9 +64,9 @@ document.querySelector('body').onclick = function(e){
   };
 };
 
-/*menuOpener.addEventListener('click', function(){
+menuOpener.addEventListener('click', function(){
   topNav.classList.toggle('menu-is-active');
-})*/
+})
 
 
 // show-filterr
@@ -80,6 +77,18 @@ filterBtn.on('click', function(){
   console.log(filter);
   filter.toggleClass('is-active')
 });
+
+// slider
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true,
+  wrapAround: true,
+  fullscreen: true
+});
+
+
+
 
 
 },{}]},{},[1])
@@ -100,7 +109,7 @@ function addListeners(){
       console.log('Rating is now', idx+1);
       setRating();
     }).bind(window,index) );
-  });  
+  });
 }
 function setRating(){
   var stars = document.querySelectorAll('.star');
@@ -116,7 +125,7 @@ function setRating(){
         star.classList.remove('rated');
         console.log('removed rated on', index );
       }
-    });    
+    });
   }
 
 
@@ -124,7 +133,7 @@ $(function () {
     $(".comment").slice(0, 2).show();
     $("#loadMore").on('click', function (e) {
         e.preventDefault();
-        $(".comment:hidden").slice(0, 2).slideDown();        
+        $(".comment:hidden").slice(0, 2).slideDown();
     });
 });
 
@@ -133,41 +142,109 @@ $(function () {
 
 //slider
 
-$('.slider-container').slick({
-  dots: true,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
+
+// creates decoration line left of the element(only order.html)
+// usage: inside flex container with decoratable elemet;
+// decoratable element should have ".to-decorate" class
+function setDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var orderDecorators = document.querySelectorAll('.order-decorator');
+    [].forEach.call(orderDecorators, function(decorator){
+      var toDecorate = decorator.parentElement.querySelector('.to-decorate');
+      if(!toDecorate){
+        return false;
       }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
+      var decorHeight = toDecorate.clientHeight - 40;
+      var decoString = "";
+      for (var i = 0; i < Math.floor(decorHeight / 10); i++) {
+        decoString += "/\n"
       }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
+      var decoElement = document.createElement('div');
+      decoElement.classList.add('decoLine');
+      decoElement.appendChild(document.createTextNode(decoString));
+      decorator.appendChild(decoElement)
+    })
+  }
+}
+
+// delete current decoration line (at order.html)
+// needs to reinitialize decoration line
+function removeDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var decoratorLines = document.querySelectorAll('.decoLine');
+    [].forEach.call(decoratorLines, function(item){
+      item.parentNode.removeChild(item);
+    })
+  }
+}
+
+//decoration initialization
+setDecorator();
+window.addEventListener('resize', function(){
+  removeDecorator();
+  setDecorator();
 });
+
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true
+});
+
+$( function() {
+    $( "#datepicker" ).datepicker({
+      dateFormat: "d.m.y",
+      defaultDate: 0,
+      firstDay: 1,
+      setDate: +1
+    });
+  } );
+
+function checkReciver(){
+  var senderFields = document.querySelectorAll(".delivery__sender input");
+  if(!senderFields[0]){
+    return false;
+    }
+  if(document.querySelector('#reciver-self').checked){
+    document.querySelector(".delivery__sender").classList.add('sender-disable');
+    [].forEach.call(senderFields, function(field){
+      field.required = false;
+    })
+  } else {
+      document.querySelector(".delivery__sender").classList.remove('sender-disable');
+      [].forEach.call(senderFields, function(field){
+        field.required = true;
+      })
+  }
+  removeDecorator();
+  setDecorator();
+}
+
+checkReciver();
+
+var deliveryRadios = document.querySelectorAll(".delivery-radio");
+[].forEach.call(deliveryRadios, function(radio){
+  var thisRadio = radio.querySelector('input');
+  thisRadio.addEventListener('click', function(){
+    [].forEach.call(document.querySelectorAll('.radiochecked'), function(elem){
+      elem.classList.remove('radiochecked-active')
+    });
+    [].forEach.call(document.querySelectorAll('.delivery-radio label'), function(elem){
+      elem.classList.remove('radiotitle-active');
+    });
+    radio.querySelector('.radiochecked').classList.add("radiochecked-active");
+    radio.querySelector('label').classList.add("radiotitle-active");
+    checkReciver();
+  })
+})
+console.log(document.location.pathname == "/");
+if(document.location.pathname == "/"){
+  var productDescriptions = document.querySelectorAll(".product__description");
+  [].forEach.call(productDescriptions, function(item){
+    item.setAttribute('style', 'margin-bottom: -20px')
+  })
+}
+
 
 jQuery(document).ready(function(){
     $('.qtyplus').click(function(e){
@@ -176,20 +253,38 @@ jQuery(document).ready(function(){
         var currentVal = parseInt($('input[name='+fieldName+']').val());
         if (!isNaN(currentVal)) {
             $('input[name='+fieldName+']').val(currentVal + 1);
+            priseChange(currentVal+1);
         } else {
-            $('input[name='+fieldName+']').val(0);
+            $('input[name='+fieldName+']').val(1);
         }
     });
     $(".qtyminus").click(function(e) {
         e.preventDefault();
         fieldName = $(this).attr('field');
         var currentVal = parseInt($('input[name='+fieldName+']').val());
-        if (!isNaN(currentVal) && currentVal > 0) {
+        if (!isNaN(currentVal) && currentVal > 1) {
             $('input[name='+fieldName+']').val(currentVal - 1);
+            priseChange(currentVal-1);
         } else {
-            $('input[name='+fieldName+']').val(0);
+            $('input[name='+fieldName+']').val(1);
         }
     });
+    function priseChange(qty) {
+      var mainPrise = $('.form__prise .hidden-prise').val();
+      console.log(mainPrise+'hhh')
+      var newPrise = mainPrise*qty;
+      $('.form__prise span').text(formatNumber(newPrise) + ' руб.');
+      console.log(newPrise)
+
+    }
+
+    function formatNumber(num) {
+      return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+    }
 });
 
+$('.slider.slider_four_in_line').EasySlides({
+  'show': 6
+})
+  
 

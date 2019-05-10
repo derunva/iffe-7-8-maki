@@ -1,0 +1,59 @@
+form(action="#").delivery
+  .delivery__select-reciver
+    +delivery-radio('Я получу заказ', "reciver", "reciver-self", "true")
+    +delivery-radio('Отправить заказ адресату', "reciver", "reciver-other")
+    
+  
+  .delivery__sender
+    .delivery__sender-title.delivery__title Отправитель:
+    input(type="text" name="senderName" placeholder="Имя" required)
+    input(type="phone" name="senderPhone" placeholder="Телефон" required)
+      
+  .delivery__reciver
+    .delivery__reciver-title.delivery__title Получатель:
+    input(type="text" name="reciverSurname" placeholder="Фамилия" required)
+    input(type="text" name="reciverName" placeholder="Имя" required)
+    input(type="text" name="reciverName" placeholder="Отчество" required)
+    input(type="phone" name="reciverPhone" placeholder="Телефон" required)
+      
+  .delivery__addres
+    .delivery__addres-title.delivery__title Адрес доставки:
+    .delivery__icon-input
+      input(type="text" value="г. Челябинск" name="deliveryCity" id="deliveryCity" required)
+      label(for="deliveryCity").delivery__label
+        i.fas.fa-map-marker-alt
+    input(type="text" name="deliveryStreet" placeholder="ул. Советская, д. 62, кв. 3" required)
+      
+  .delivery__postcard
+    +checkbox({
+      title: "Добавить открытку",
+      id: "addPostcard",
+      status: "checked"
+    })
+    .free
+      img(src="./img/free.png" alt="free Image")
+        
+  .delivery__comment
+    textarea(rows="4" placeholder="Текст")
+  
+  .delivery__time.m-b-40
+    .delivery__time-title.delivery__title Дата и время доставки:
+    .delivery__icon-input
+      input(type="text" placeholder="08.03.16" name="deliveryDate" id="datepicker")
+      label(for="datepicker").delivery__label
+        i.fas.fa-calendar-alt
+    .delivery__icon-input
+      input(type="text" name="deliveryTime" placeholder="00:00" id="deliveryTime")
+      label(for="deliveryTime").delivery__label
+        i.far.fa-clock
+    .delivery__time-info
+      |* С 9.00 до 24.00 - 500 руб.
+      br
+      |Доставка в ночное время - 700 руб.
+    
+  .delivery__price
+    .delivery__price-title Стоимость доставки составит:
+    .delivery__price-value 500 руб.
+  .delivery__total
+    .delivery__total-title Итого:
+    .delivery__total-value 5 500 руб.
