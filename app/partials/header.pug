@@ -15,12 +15,15 @@
           a(href="#").cart-button.m-t-30
             i.sprite-icon-cart.sprite
             |КОРЗИНА
-          .headertext
-            span
-              strong 10
-              |товаров
-            span на сумму
-              strong 1000 руб.
+
+          .headertext  
+            span 
+              strong#counter 0 
+              | товаров
+            span на сумму 
+              strong#price 1000 
+              | руб.
+
   .header__bottom
     .wrapper
       .menu-card
