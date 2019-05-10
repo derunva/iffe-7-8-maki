@@ -31,6 +31,13 @@ mixin checkbox(chackboxItem)
     span.checkmark
     -;
 
+mixin radio(radioItem)
+  label.radio-btn
+    input(type="radio"  name="radio" value=radioItem.id) 
+    span=radioItem.title
+    span.checkmark
+  -;
+
 mixin addSearch(status)
   div(class = 'search' class = status)
     form.search__form
@@ -47,6 +54,7 @@ mixin card(item)
 
       img(src="img/"+item.img alt="")
     .card__title=item.title
+-;  
     
 mixin order-decorator(index)
   .order-decorator
