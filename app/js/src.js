@@ -10,11 +10,9 @@ $(".js-range-slider").ionRangeSlider({
 
   onChange: function (data) {
     console.dir(data.from);
-
     $('.price-from').text(data.from + ' руб.');
     $('.price-to').text(data.to + ' руб.');
   }
-
 });
 
 
@@ -38,7 +36,6 @@ search.each(function(){
 });
 
 
-//checking if target is not one of nodelist elements
 function check(nodelist, target){
   var result = [].every.call(nodelist, function(item){
     return item != target;
@@ -61,10 +58,15 @@ document.querySelector('body').onclick = function(e){
   if(e.target != $('.header-search form') && check($('.header-search form *'), e.target)){
     headerSearch.classList.remove('search-is-active');
     submitButton.classList.remove('submit-btn-is-active');
-  };
+  }
   if(check($('.top-nav *'), e.target) && check($('.menu-opener *'), e.target) && e.target != menuOpener){
     topNav.classList.remove('menu-is-active');
-  };
+  }
+  if(check($('.city-list *'), e.target) && check($('input[name="deliveryCity"]'), e.target)){
+    if(document.querySelector('.delivery')){
+      document.querySelector(".city-list").classList.remove("city-list-active");
+    }
+  }
 };
 
 menuOpener.addEventListener('click', function(){
@@ -81,13 +83,25 @@ filterBtn.on('click', function(){
   filter.toggleClass('is-active')
 });
 
+// slider
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'center',
+  contain: true,
+  freeScroll: true,
+  pageDots: false
+});
+
+
+
+
 
 },{}]},{},[1])
 
 
 document.addEventListener('DOMContentLoaded', function(){
   addListeners();
-  setRating(); //based on value inside the div
+  setRating();
 });
 function addListeners(){
   var stars = document.querySelectorAll('.star');
@@ -106,6 +120,7 @@ function setRating(){
   var stars = document.querySelectorAll('.star');
   if(!stars.length){
     return false
+  }
     var rating = parseInt( document.querySelector('.stars').getAttribute('data-rating') );
     [].forEach.call(stars, function(star, index){
       if(rating > index){
@@ -117,7 +132,7 @@ function setRating(){
       }
     });
   }
-}
+
 
 $(function () {
     $(".comment").slice(0, 2).show();
@@ -130,41 +145,188 @@ $(function () {
 
 //slider
 
-$('.slider-container').slick({
-  dots: true,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
+
+// creates decoration line left of the element(only order.html)
+// usage: inside flex container with decoratable elemet;
+// decoratable element should have ".to-decorate" class
+function setDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var orderDecorators = document.querySelectorAll('.order-decorator');
+    [].forEach.call(orderDecorators, function(decorator){
+      var toDecorate = decorator.parentElement.querySelector('.to-decorate');
+      if(!toDecorate){
+        return false;
       }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
+      var decorHeight = toDecorate.clientHeight - 40;
+      var decoString = "";
+      for (var i = 0; i < Math.floor(decorHeight / 10); i++) {
+        decoString += "/\n"
       }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
+      var decoElement = document.createElement('div');
+      decoElement.classList.add('decoLine');
+      decoElement.appendChild(document.createTextNode(decoString));
+      decorator.appendChild(decoElement)
+    })
+  }
+}
+
+// delete current decoration line (at order.html)
+// needs to reinitialize decoration line
+function removeDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var decoratorLines = document.querySelectorAll('.decoLine');
+    [].forEach.call(decoratorLines, function(item){
+      item.parentNode.removeChild(item);
+    })
+  }
+}
+
+//decoration initialization
+setDecorator();
+window.addEventListener('resize', function(){
+  removeDecorator();
+  setDecorator();
 });
+
+
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true
+});
+
+
+$( function() {
+    $( "#datepicker" ).datepicker({
+      dateFormat: "d.m.y",
+      defaultDate: 0,
+      firstDay: 1,
+      setDate: +1
+    });
+  } );
+
+function checkReciver(){
+  var senderFields = document.querySelectorAll(".delivery__sender input");
+  if(!senderFields[0]){
+    return false;
+    }
+  if(document.querySelector('#reciver-self').checked){
+    document.querySelector(".delivery__sender").classList.add('sender-disable');
+    [].forEach.call(senderFields, function(field){
+      field.required = false;
+    })
+  } else {
+      document.querySelector(".delivery__sender").classList.remove('sender-disable');
+      [].forEach.call(senderFields, function(field){
+        field.required = true;
+      })
+  }
+  removeDecorator();
+  setDecorator();
+  setPosition();
+}
+
+checkReciver();
+
+var deliveryRadios = document.querySelectorAll(".delivery-radio");
+[].forEach.call(deliveryRadios, function(radio){
+  var thisRadio = radio.querySelector('input');
+  thisRadio.addEventListener('click', function(){
+    [].forEach.call(document.querySelectorAll('.radiochecked'), function(elem){
+      elem.classList.remove('radiochecked-active')
+    });
+    [].forEach.call(document.querySelectorAll('.delivery-radio label'), function(elem){
+      elem.classList.remove('radiotitle-active');
+    });
+    radio.querySelector('.radiochecked').classList.add("radiochecked-active");
+    radio.querySelector('label').classList.add("radiotitle-active");
+    checkReciver();
+  })
+})
+
+
+
+function showCityVariants(){
+  if(!document.querySelector("form.delivery")){
+    return false;
+  }
+  var cityExamples = ["Київ", "Харків", "Одеса", "Дніпропетровськ", "Донецьк", "Запоріжжя", "Львів", "Кривий Ріг",
+  "Миколаїв", "Маріуполь"];
+  var cityField = document.getElementsByName("deliveryCity")[0];
+  var cityPropose = document.querySelector(".city-list");
+  var cityList = document.querySelector(".city-list ul");
+
+  cityPropose.style.top = offset(cityField).top + 33 + "px";
+  cityPropose.style.left = offset(cityField).left + "px";
+  window.addEventListener("resize", function(){
+    cityPropose.style.top = offset(cityField).top + 33 + "px";
+    cityPropose.style.left = offset(cityField).left + "px";
+  });
+  cityField.addEventListener("keyup", function(){
+    cityPropose.classList.add("city-list-active");
+    var reg = new RegExp("^" + cityField.value, "i");
+    var resultList = [];
+    cityExamples.forEach(function(city){
+      if(city.match(reg)){
+        resultList.push(city);
+      }
+    });
+    [].forEach.call(document.querySelectorAll(".city-list li"), function(elem){
+      elem.parentNode.removeChild(elem);
+    })
+    resultList.forEach(function(item){
+      var element = document.createElement("li");
+      var cityName = document.createTextNode(item);
+      element.addEventListener('click', function(){
+        cityField.value = item;
+        cityPropose.classList.remove("city-list-active");
+      })
+      element.appendChild(cityName);
+      cityList.appendChild(element);
+    })
+
+  })
+
+}
+
+
+jQuery(document).ready(function(){
+    $('.qtyplus').click(function(e){
+        e.preventDefault();
+        fieldName = $(this).attr('field');
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        if (!isNaN(currentVal)) {
+            $('input[name='+fieldName+']').val(currentVal + 1);
+            priseChange(currentVal+1);
+        } else {
+            $('input[name='+fieldName+']').val(1);
+        }
+    });
+    $(".qtyminus").click(function(e) {
+        e.preventDefault();
+        fieldName = $(this).attr('field');
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        if (!isNaN(currentVal) && currentVal > 1) {
+            $('input[name='+fieldName+']').val(currentVal - 1);
+            priseChange(currentVal-1);
+        } else {
+            $('input[name='+fieldName+']').val(1);
+        }
+    });
+    function priseChange(qty) {
+      var mainPrise = $('.form__prise .hidden-prise').val();
+      console.log(mainPrise+'hhh')
+      var newPrise = mainPrise*qty;
+      $('.form__prise span').text(formatNumber(newPrise) + ' руб.');
+      console.log(newPrise)
+
+    }
+
+    function formatNumber(num) {
+      return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+    }
+});
+
 
 
 window.counter
@@ -258,3 +420,28 @@ window.addEventListener('resize', function(){
   removeDecorator();
   setDecorator();
 });
+
+$('.slider.slider_four_in_line').EasySlides({
+  'show': 6
+})
+  
+
+
+function setPosition(){
+  var cityPropose = document.querySelector(".city-list");
+  var cityField = document.getElementsByName("deliveryCity")[0];
+  cityPropose.style.top = offset(cityField).top + 33 + "px";
+  cityPropose.style.left = offset(cityField).left + "px";
+}
+
+function offset(el) {
+    var rect = el.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+}
+
+showCityVariants();
+
+
+
