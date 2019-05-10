@@ -58,10 +58,15 @@ document.querySelector('body').onclick = function(e){
   if(e.target != $('.header-search form') && check($('.header-search form *'), e.target)){
     headerSearch.classList.remove('search-is-active');
     submitButton.classList.remove('submit-btn-is-active');
-  };
+  }
   if(check($('.top-nav *'), e.target) && check($('.menu-opener *'), e.target) && e.target != menuOpener){
     topNav.classList.remove('menu-is-active');
-  };
+  }
+  if(check($('.city-list *'), e.target) && check($('input[name="deliveryCity"]'), e.target)){
+    if(document.querySelector('.delivery')){
+      document.querySelector(".city-list").classList.remove("city-list-active");
+    }
+  }
 };
 
 menuOpener.addEventListener('click', function(){
@@ -96,7 +101,7 @@ $('.main-carousel').flickity({
 
 document.addEventListener('DOMContentLoaded', function(){
   addListeners();
-  setRating(); 
+  setRating();
 });
 function addListeners(){
   var stars = document.querySelectorAll('.star');
@@ -218,6 +223,7 @@ function checkReciver(){
   }
   removeDecorator();
   setDecorator();
+  setPosition();
 }
 
 checkReciver();
@@ -237,10 +243,63 @@ var deliveryRadios = document.querySelectorAll(".delivery-radio");
     checkReciver();
   })
 })
-console.log(document.location.pathname == "/");
-if(document.location.pathname == "/"){
-  var productDescriptions = document.querySelectorAll(".product__description");
-  [].forEach.call(productDescriptions, function(item){
-    item.setAttribute('style', 'margin-bottom: -20px')
+
+
+function showCityVariants(){
+  if(!document.querySelector("form.delivery")){
+    return false;
+  }
+  var cityExamples = ["Київ", "Харків", "Одеса", "Дніпропетровськ", "Донецьк", "Запоріжжя", "Львів", "Кривий Ріг",
+  "Миколаїв", "Маріуполь"];
+  var cityField = document.getElementsByName("deliveryCity")[0];
+  var cityPropose = document.querySelector(".city-list");
+  var cityList = document.querySelector(".city-list ul");
+
+  cityPropose.style.top = offset(cityField).top + 33 + "px";
+  cityPropose.style.left = offset(cityField).left + "px";
+  window.addEventListener("resize", function(){
+    cityPropose.style.top = offset(cityField).top + 33 + "px";
+    cityPropose.style.left = offset(cityField).left + "px";
+  });
+  cityField.addEventListener("keyup", function(){
+    cityPropose.classList.add("city-list-active");
+    var reg = new RegExp("^" + cityField.value, "i");
+    var resultList = [];
+    cityExamples.forEach(function(city){
+      if(city.match(reg)){
+        resultList.push(city);
+      }
+    });
+    [].forEach.call(document.querySelectorAll(".city-list li"), function(elem){
+      elem.parentNode.removeChild(elem);
+    })
+    resultList.forEach(function(item){
+      var element = document.createElement("li");
+      var cityName = document.createTextNode(item);
+      element.addEventListener('click', function(){
+        cityField.value = item;
+        cityPropose.classList.remove("city-list-active");
+      })
+      element.appendChild(cityName);
+      cityList.appendChild(element);
+    })
+
   })
+
 }
+
+function setPosition(){
+  var cityPropose = document.querySelector(".city-list");
+  var cityField = document.getElementsByName("deliveryCity")[0];
+  cityPropose.style.top = offset(cityField).top + 33 + "px";
+  cityPropose.style.left = offset(cityField).left + "px";
+}
+
+function offset(el) {
+    var rect = el.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+}
+
+showCityVariants();
