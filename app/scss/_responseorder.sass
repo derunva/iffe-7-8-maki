@@ -1,0 +1,117 @@
+.order
+  font-size: 20px
+  font-weight: bold
+  +breakpoint(tablet)
+    font-size: 37px
+  &__description
+    background-color: #f0f0f0
+    padding: 20px
+    margin: 20px 0
+    +breakpoint(tablet)
+      padding: 30px
+      margin: 30px 0
+    .form      
+      color: #666666
+      margin-top: 0
+      display: flex
+      justify-content: space-between
+      +breakpoint(tablet)
+        margin-top: 30px
+      #myform 
+        text-align: center
+        padding: 5px
+        border: 1px dotted #ccc
+        margin: 2%
+      .m-l
+        display: flex
+        flex-direction: column
+        .form__prise
+          font-size: 16px
+          +breakpoint(tablet)
+            font-size: 23px
+        .form__quantity
+          font-size: 10px
+          display: flex
+          flex-direction: column
+          +breakpoint(tablet)
+            margin: 25px 0
+            font-size: 13px
+            flex-direction: row
+          .input-form
+            background-color: #fff
+            padding: 5px
+            width: 70%
+            margin-left: 10px
+            +breakpoint(laptop)
+              margin: 0 70px 0 20px
+              width: 100%
+            input.qtyminus, input.qtyplus
+              border: none
+              background-color: #f99a9a
+              color: #fff
+              font-weight: bold
+              font-size: 10px
+              +breakpoint(tablet)
+                font-size: 15px
+            input.qtyminus
+              padding: 1px 5px
+              +breakpoint(tablet)
+                padding: 3px 9px
+            input.qtyplus
+              padding: 1px 4px
+              +breakpoint(tablet)
+                padding: 3px 7px
+            .qty 
+              text-align: center
+              border: none
+              width: 12px
+              +breakpoint(laptop)
+                width: 30px
+      &__button
+        button
+          padding: 10px 15px
+          color: #fff
+          background-image: linear-gradient(to bottom, #ffaaaa, #fca0a0, #f89696, #f48c8c, #f08282)
+          border: none
+          +breakpoint(tablet)
+            padding: 20px 30px
+          span
+            font-size: 15px
+            +breakpoint(tablet)
+              font-size: 25px
+  &__text
+    border-top: 1px solid #fff
+    color: #666666
+    font-size: 10px
+    display: flex
+    flex-direction: row
+    +breakpoint(tablet)
+      font-size: 13px
+    span
+      padding-top: 10px
+      +breakpoint(tablet)
+        padding-top: 20px
+.delivery
+  margin-bottom: 20px
+  span 
+    font-size: 15px
+    font-weight: bold
+  &__info
+    display: flex
+    flex-direction: column
+    p
+      font-weight: 100
+    i.fa-truck:before, i.fa-moon:before
+      color: #ff7575
+      padding-right: 20px
+    i.fa-truck, i.fa-moon
+      display: flex
+      padding-bottom: 10px
+  &__text
+    font-size: 15px
+    color: #333333
+    span 
+      font-weight: bold
+      padding: 20px 0
+
+

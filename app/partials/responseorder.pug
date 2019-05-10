@@ -1,0 +1,33 @@
+.order
+  span Нежный букет из роз
+  .order__description
+    .form(id='myform' method='POST' action='#')
+      .m-l
+        .form__prise
+          input(type='hidden' value='2350' class='hidden-prise' field='quantity')
+          span 2 350 руб.
+        .form__quantity
+          span Количество
+          .input-form
+            input(type='button' value='-' class='qtyminus' field='quantity')
+            input(type='text' name='quantity' value='1' readonly
+             class='qty')
+            input(type='button' value='+' class='qtyplus' field='quantity')
+      .form__button
+        a(href="order.html")
+          button
+            span Заказать
+    .order__text
+      span При заказе букета вы получите 3% бонусов или 90 рублей. Вы их можете использовать при следующем заказе
+.delivery
+  span Доставка
+  .delivery__info
+    i(class="fas fa-truck")
+      p С 9.00 до 24.00 -  
+      span  500 руб. 
+    i(class="fas fa-moon")
+      p Доставка в ночное время -  
+      span  700 руб.
+  .delivery__text
+    span Описание буклета
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
