@@ -6,7 +6,15 @@ html(lang="uk")
     include partials/header
     include partials/response
     .wrapper
+
       .title.m-b-20
         | Вас может заинтересовать
-    include partials/slider
+      include partials/slider
+
+      .row
+        each i in '123'
+          .column-phablet-1-2.column-laptop-1-3.m-b-30
+            include partials/article-news
+              
+
     include partials/footer

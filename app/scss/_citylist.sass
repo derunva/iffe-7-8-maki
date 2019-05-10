@@ -1,0 +1,25 @@
+.city-list
+  display: none
+  position: absolute
+  font-size: 15px
+  background-color: white
+  max-height: 200px
+  overflow-y: auto
+  z-index: 2
+  border: 1px solid #ff9999
+  min-width: 178px
+
+  ul
+    display: flex
+    flex-direction: column
+
+    li
+      padding: 5px
+      transition: .2s ease all
+      cursor: pointer
+
+      &:hover
+        background-color: #ff9999
+
+.city-list-active
+  display: block !important
