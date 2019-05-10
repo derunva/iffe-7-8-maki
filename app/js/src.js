@@ -15,7 +15,6 @@ $(".js-range-slider").ionRangeSlider({
   }
 });
 
-
 //  search-block
 var searchButton = $('.search > button');
 var search = $('.search');
