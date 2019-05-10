@@ -63,7 +63,7 @@ document.querySelector('body').onclick = function(e){
     topNav.classList.remove('menu-is-active');
   }
   if(check($('.city-list *'), e.target) && check($('input[name="deliveryCity"]'), e.target)){
-    if(document.querySelector('.delivery')){
+    if(document.location.pathname.includes("/order.html")){
       document.querySelector(".city-list").classList.remove("city-list-active");
     }
   }
@@ -86,10 +86,10 @@ filterBtn.on('click', function(){
 // slider
 $('.main-carousel').flickity({
   // options
-  cellAlign: 'left',
+  cellAlign: 'center',
   contain: true,
-  wrapAround: true,
-  fullscreen: true
+  freeScroll: true,
+  pageDots: false
 });
 
 
@@ -143,8 +143,6 @@ $(function () {
 });
 
 
-
-
 //slider
 
 
@@ -190,11 +188,13 @@ window.addEventListener('resize', function(){
   setDecorator();
 });
 
+
 $('.main-carousel').flickity({
   // options
   cellAlign: 'left',
   contain: true
 });
+
 
 $( function() {
     $( "#datepicker" ).datepicker({
@@ -243,6 +243,7 @@ var deliveryRadios = document.querySelectorAll(".delivery-radio");
     checkReciver();
   })
 })
+
 
 
 function showCityVariants(){
@@ -327,10 +328,104 @@ jQuery(document).ready(function(){
     }
 });
 
+
+
+window.counter
+var currentPrice = 1000;
+$('.product__button a').on('click', function(e){
+  e.preventDefault()
+  var price = $(this).data("price")
+  currentPrice+=price
+    $('#price').text(currentPrice)
+  var currentNum = $('#counter').text()
+  currentNum++
+    $('#counter').text(currentNum)
+  var product = $(this).parents('.product');
+  var fake_product = product.clone()
+  var pos = product.offset()
+  console.log(pos)
+  fake_product.css({
+    position: 'absolute',
+    top: pos.top,
+    left: pos.left,
+    'min-height': 'auto',
+    background: '#fff'
+  })
+  var order = $('.cart-button')
+  var order_pos = order.offset()
+  $('body').append(fake_product);
+  console.log(fake_product)
+  fake_product.animate({
+    top: order_pos.top,
+    left: order_pos.left,
+
+  }, 1000, function(){
+    console.log(fake_product.remove())
+    fake_product.remove();
+  })
+
+})
+
+// TODO: revork this script(checked on click)
+var deliveryCheckers = $('.delivery__checkbox');
+if(deliveryCheckers){
+  [].forEach.call(deliveryCheckers, function(item){
+    item.addEventListener('click', function(){
+      [].forEach.call(deliveryCheckers, function(elem){
+        elem.classList.remove('checkbox-is-active');
+      });
+      item.classList.add('checkbox-is-active');
+      item.querySelector('input').setAttribute('checked', 'checked');
+    })
+  })
+}
+
+// creates decoration line left of the element(only order.html)
+// usage: inside flex container with decoratable elemet;
+// decoratable element should have ".to-decorate" class
+function setDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var orderDecorators = document.querySelectorAll('.order-decorator');
+    [].forEach.call(orderDecorators, function(decorator){
+      var toDecorate = decorator.parentElement.querySelector('.to-decorate');
+      if(!toDecorate){
+        return false;
+      }
+      var decorHeight = toDecorate.clientHeight - 40;
+      var decoString = "";
+      for (var i = 0; i < Math.floor(decorHeight / 10); i++) {
+        decoString += "/\n"
+      }
+      var decoElement = document.createElement('div');
+      decoElement.classList.add('decoLine');
+      decoElement.appendChild(document.createTextNode(decoString));
+      decorator.appendChild(decoElement)
+    })
+  }
+}
+
+// delete current decoration line (at order.html)
+// needs to reinitialize decoration line
+function removeDecorator(){
+  if(document.location.pathname.includes('order.html')){
+    var decoratorLines = document.querySelectorAll('.decoLine');
+    [].forEach.call(decoratorLines, function(item){
+      item.parentNode.removeChild(item);
+    })
+  }
+}
+
+//decoration initialization
+setDecorator();
+window.addEventListener('resize', function(){
+  removeDecorator();
+  setDecorator();
+});
+
 $('.slider.slider_four_in_line').EasySlides({
   'show': 6
 })
-  
+
 
 
 function setPosition(){

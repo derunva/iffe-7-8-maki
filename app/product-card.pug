@@ -4,7 +4,12 @@ html(lang="uk")
   include partials/mixin
   body
     include partials/header
-    include partials/response
+    include partials/response   
+    .wrapper
+      .row
+        .title.m-b-20
+          | Вас может заинтересовать
+    include partials/slider
     .wrapper
       .row
         each i in '123'
