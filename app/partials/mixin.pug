@@ -21,7 +21,7 @@ mixin product(image, description, price, modificator)
           var rndPrice = Math.floor(Math.random() * Math.floor(10000));
         |#{rndPrice} #{" руб."}
     .product__button
-      a(href="#").hover-order
+      a(href="#" data-price=rndPrice).hover-order
         |ЗАКАЗАТЬ
 
 mixin checkbox(chackboxItem)
@@ -51,6 +51,7 @@ mixin card(item)
 mixin order-decorator(index)
   .order-decorator
     .order-decorator__iteration #{index}
+
     
 mixin delivery-radio(title, name, id, checked)
   -if(checked)
@@ -65,3 +66,4 @@ mixin delivery-radio(title, name, id, checked)
       label(for="" + id) #{title}
         span.radiospan
           span.radiochecked
+
