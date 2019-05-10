@@ -1,8 +1,22 @@
 form(action="#").delivery
   .delivery__select-reciver
+
+    .delivery__checkbox.m-r-50
+      +checkbox({
+        title: "Я получу заказ",
+        id: "checkbox1"
+      })
+    .delivery__checkbox.checkbox-is-active
+      +checkbox({
+        title: "Отправить заказ адресату",
+        id: "checkbox2",
+        status: 'checked'
+      })
+
     +delivery-radio('Я получу заказ', "reciver", "reciver-self", "true")
     +delivery-radio('Отправить заказ адресату', "reciver", "reciver-other")
     
+
   
   .delivery__sender
     .delivery__sender-title.delivery__title Отправитель:
@@ -19,7 +33,9 @@ form(action="#").delivery
   .delivery__addres
     .delivery__addres-title.delivery__title Адрес доставки:
     .delivery__icon-input
-      input(type="text" placeholder="Челябинск" name="deliveryCity" id="deliveryCity" required)
+
+      input(type="text" value="г. Челябинск" name="deliveryCity" id="deliveryCity" required)
+
       label(for="deliveryCity").delivery__label
         i.fas.fa-map-marker-alt
     input(type="text" name="deliveryStreet" placeholder="ул. Советская, д. 62, кв. 3" required)
@@ -39,8 +55,11 @@ form(action="#").delivery
   .delivery__time.m-b-40
     .delivery__time-title.delivery__title Дата и время доставки:
     .delivery__icon-input
-      input(type="text" placeholder="08.03.16" name="deliveryDate" id="datepicker")
-      label(for="datepicker").delivery__label
+
+      input(type="text" value="08.03.16" name="deliveryDate" id="deliveryDate")
+      label(for="deliveryDate").delivery__label
+
+
         i.fas.fa-calendar-alt
     .delivery__icon-input
       input(type="text" name="deliveryTime" placeholder="00:00" id="deliveryTime")
