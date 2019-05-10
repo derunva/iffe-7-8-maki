@@ -86,10 +86,10 @@ filterBtn.on('click', function(){
 // slider
 $('.main-carousel').flickity({
   // options
-  cellAlign: 'left',
+  cellAlign: 'center',
   contain: true,
-  wrapAround: true,
-  fullscreen: true
+  freeScroll: true,
+  pageDots: false
 });
 
 
@@ -190,11 +190,13 @@ window.addEventListener('resize', function(){
   setDecorator();
 });
 
+
 $('.main-carousel').flickity({
   // options
   cellAlign: 'left',
   contain: true
 });
+
 
 $( function() {
     $( "#datepicker" ).datepicker({
@@ -243,6 +245,7 @@ var deliveryRadios = document.querySelectorAll(".delivery-radio");
     checkReciver();
   })
 })
+
 
 
 function showCityVariants(){
@@ -347,4 +350,5 @@ function offset(el) {
 }
 
 showCityVariants();
+
 
