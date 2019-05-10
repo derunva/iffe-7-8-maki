@@ -63,7 +63,7 @@ document.querySelector('body').onclick = function(e){
     topNav.classList.remove('menu-is-active');
   }
   if(check($('.city-list *'), e.target) && check($('input[name="deliveryCity"]'), e.target)){
-    if(document.querySelector('.delivery')){
+    if(document.location.pathname.includes("/order.html")){
       document.querySelector(".city-list").classList.remove("city-list-active");
     }
   }
@@ -332,7 +332,7 @@ jQuery(document).ready(function(){
 $('.slider.slider_four_in_line').EasySlides({
   'show': 6
 })
-  
+
 
 
 function setPosition(){
@@ -350,5 +350,3 @@ function offset(el) {
 }
 
 showCityVariants();
-
-
