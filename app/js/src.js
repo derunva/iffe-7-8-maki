@@ -145,6 +145,9 @@ $(function () {
 
 
 
+//slider
+
+
 // creates decoration line left of the element(only order.html)
 // usage: inside flex container with decoratable elemet;
 // decoratable element should have ".to-decorate" class
@@ -186,9 +189,6 @@ window.addEventListener('resize', function(){
   removeDecorator();
   setDecorator();
 });
-
-
-
 
 $('.main-carousel').flickity({
   // options
@@ -288,6 +288,50 @@ function showCityVariants(){
 
 }
 
+
+jQuery(document).ready(function(){
+    $('.qtyplus').click(function(e){
+        e.preventDefault();
+        fieldName = $(this).attr('field');
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        if (!isNaN(currentVal)) {
+            $('input[name='+fieldName+']').val(currentVal + 1);
+            priseChange(currentVal+1);
+        } else {
+            $('input[name='+fieldName+']').val(1);
+        }
+    });
+    $(".qtyminus").click(function(e) {
+        e.preventDefault();
+        fieldName = $(this).attr('field');
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        if (!isNaN(currentVal) && currentVal > 1) {
+            $('input[name='+fieldName+']').val(currentVal - 1);
+            priseChange(currentVal-1);
+        } else {
+            $('input[name='+fieldName+']').val(1);
+        }
+    });
+    function priseChange(qty) {
+      var mainPrise = $('.form__prise .hidden-prise').val();
+      console.log(mainPrise+'hhh')
+      var newPrise = mainPrise*qty;
+      $('.form__prise span').text(formatNumber(newPrise) + ' руб.');
+      console.log(newPrise)
+
+    }
+
+    function formatNumber(num) {
+      return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+    }
+});
+
+$('.slider.slider_four_in_line').EasySlides({
+  'show': 6
+})
+  
+
+
 function setPosition(){
   var cityPropose = document.querySelector(".city-list");
   var cityField = document.getElementsByName("deliveryCity")[0];
@@ -303,3 +347,4 @@ function offset(el) {
 }
 
 showCityVariants();
+
