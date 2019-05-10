@@ -380,47 +380,7 @@ if(deliveryCheckers){
   })
 }
 
-// creates decoration line left of the element(only order.html)
-// usage: inside flex container with decoratable elemet;
-// decoratable element should have ".to-decorate" class
-function setDecorator(){
-  if(document.location.pathname.includes('order.html')){
-    var orderDecorators = document.querySelectorAll('.order-decorator');
-    [].forEach.call(orderDecorators, function(decorator){
-      var toDecorate = decorator.parentElement.querySelector('.to-decorate');
-      if(!toDecorate){
-        return false;
-      }
-      var decorHeight = toDecorate.clientHeight - 40;
-      var decoString = "";
-      for (var i = 0; i < Math.floor(decorHeight / 10); i++) {
-        decoString += "/\n"
-      }
-      var decoElement = document.createElement('div');
-      decoElement.classList.add('decoLine');
-      decoElement.appendChild(document.createTextNode(decoString));
-      decorator.appendChild(decoElement)
-    })
-  }
-}
 
-// delete current decoration line (at order.html)
-// needs to reinitialize decoration line
-function removeDecorator(){
-  if(document.location.pathname.includes('order.html')){
-    var decoratorLines = document.querySelectorAll('.decoLine');
-    [].forEach.call(decoratorLines, function(item){
-      item.parentNode.removeChild(item);
-    })
-  }
-}
-
-//decoration initialization
-setDecorator();
-window.addEventListener('resize', function(){
-  removeDecorator();
-  setDecorator();
-});
 
 $('.slider.slider_four_in_line').EasySlides({
   'show': 6
@@ -443,4 +403,3 @@ function offset(el) {
 }
 
 showCityVariants();
-
