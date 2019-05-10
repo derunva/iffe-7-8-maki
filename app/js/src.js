@@ -83,7 +83,8 @@ $('.main-carousel').flickity({
   // options
   cellAlign: 'center',
   contain: true,
-  freeScroll: true
+  freeScroll: true,
+  pageDots: false
 });
 
 
@@ -184,11 +185,6 @@ window.addEventListener('resize', function(){
 
 
 
-$('.main-carousel').flickity({
-  // options
-  cellAlign: 'left',
-  contain: true
-});
 
 $( function() {
     $( "#datepicker" ).datepicker({
