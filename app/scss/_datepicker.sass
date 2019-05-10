@@ -1,0 +1,45 @@
+.ui-datepicker
+  background-color: #f7f7f7
+  padding: 10px
+  border: 1px solid #f7f7f7
+  border-radius: 5px
+  display: none
+
+  a
+    text-decoration: none
+    width: 34px
+    height: 34px
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 3px
+    color: #ff9999
+    border: 1px solid #ff9999
+    transition: .2s ease all
+
+    &:hover
+      color: #f7f7f7
+      background-color: #ff9999
+
+
+  &-header
+    display: flex
+    flex-wrap: wrap
+
+  &-prev, &-next
+    width: calc(50% - 5px) !important
+    cursor: pointer
+
+  &-prev
+    margin-right: 10px !important
+
+  &-title
+    padding: 5px
+    width: 100%
+    text-align: center
+
+  &-week-end
+    font-weight: 400
+
+  &-current-day
+    box-shadow: 0px 0px 3px 3px #ff9999 inset
