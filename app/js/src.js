@@ -1,19 +1,19 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-$(".xzoom, .xzoom-gallery").xzoom({tint: '#333', Xoffset: 15});
-$(".js-range-slider").ionRangeSlider({
-  type: "double",
-  min: 1000,
-  max: 10000,
-  step: 10,
-  hide_from_to: true,
-  hide_min_max: true,
+  $(".xzoom, .xzoom-gallery").xzoom({tint: '#333', Xoffset: 15});
+  $(".js-range-slider").ionRangeSlider({
+    type: "double",
+    min: 1000,
+    max: 10000,
+    step: 10,
+    hide_from_to: true,
+    hide_min_max: true,
 
-  onChange: function (data) {
-    console.dir(data.from);
-    $('.price-from').text(data.from + ' руб.');
-    $('.price-to').text(data.to + ' руб.');
-  }
-});
+    onChange: function (data) {
+      console.dir(data.from);
+      $('.price-from').text(data.from + ' руб.');
+      $('.price-to').text(data.to + ' руб.');
+    }
+  });
 
 
 //  search-block
@@ -121,30 +121,26 @@ function setRating(){
   if(!stars.length){
     return false
   }
-    var rating = parseInt( document.querySelector('.stars').getAttribute('data-rating') );
-    [].forEach.call(stars, function(star, index){
-      if(rating > index){
-        star.classList.add('rated');
-        console.log('added rated on', index );
-      }else{
-        star.classList.remove('rated');
-        console.log('removed rated on', index );
-      }
-    });
-  }
+  var rating = parseInt( document.querySelector('.stars').getAttribute('data-rating') );
+  [].forEach.call(stars, function(star, index){
+    if(rating > index){
+      star.classList.add('rated');
+      console.log('added rated on', index );
+    }else{
+      star.classList.remove('rated');
+      console.log('removed rated on', index );
+    }
+  });
+}
 
 
 $(function () {
-    $(".comment").slice(0, 2).show();
-    $("#loadMore").on('click', function (e) {
-        e.preventDefault();
-        $(".comment:hidden").slice(0, 2).slideDown();
-    });
+  $(".comment").slice(0, 2).show();
+  $("#loadMore").on('click', function (e) {
+    e.preventDefault();
+    $(".comment:hidden").slice(0, 2).slideDown();
+  });
 });
-
-
-//slider
-
 
 // creates decoration line left of the element(only order.html)
 // usage: inside flex container with decoratable elemet;
@@ -197,29 +193,29 @@ $('.main-carousel').flickity({
 
 
 $( function() {
-    $( "#datepicker" ).datepicker({
-      dateFormat: "d.m.y",
-      defaultDate: 0,
-      firstDay: 1,
-      setDate: +1
-    });
-  } );
+  $( "#datepicker" ).datepicker({
+    dateFormat: "d.m.y",
+    defaultDate: 0,
+    firstDay: 1,
+    setDate: +1
+  });
+} );
 
 function checkReciver(){
   var senderFields = document.querySelectorAll(".delivery__sender input");
   if(!senderFields[0]){
     return false;
-    }
+  }
   if(document.querySelector('#reciver-self').checked){
     document.querySelector(".delivery__sender").classList.add('sender-disable');
     [].forEach.call(senderFields, function(field){
       field.required = false;
     })
   } else {
-      document.querySelector(".delivery__sender").classList.remove('sender-disable');
-      [].forEach.call(senderFields, function(field){
-        field.required = true;
-      })
+    document.querySelector(".delivery__sender").classList.remove('sender-disable');
+    [].forEach.call(senderFields, function(field){
+      field.required = true;
+    })
   }
   removeDecorator();
   setDecorator();
