@@ -398,3 +398,16 @@ function offset(el) {
 }
 
 showCityVariants();
+
+$(document).ready(function(){
+    $('#timepicker').timepicker({
+      timeFormat: 'HH:mm',
+      interval: 60,
+      maxTime: '6:00pm',
+      defaultTime: '12',
+      startTime: '8:00',
+      dynamic: false,
+      dropdown: true,
+      scrollbar: true
+    });
+});
