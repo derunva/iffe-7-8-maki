@@ -4,6 +4,9 @@ html(lang="uk")
   include partials/mixin
   body
     include partials/header
+
+    include partials/menu-opener
+
     .page
       .wrapper
         .delivery-form
@@ -11,8 +14,13 @@ html(lang="uk")
           .delivery-form__content.to-decorate
             .delivery-form__title Доставка
             include partials/delivery
+
         .delivery-form
           +order-decorator(3)
           .delivery-form__content.to-decorate
             include partials/payment-methods
+
+
+    include partials/city-list
+            
     include partials/footer
