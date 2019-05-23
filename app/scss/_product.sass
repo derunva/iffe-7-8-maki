@@ -14,6 +14,14 @@
   padding-bottom: 25px
   min-height: 100%
 
+
+  &__labels
+    position: absolute
+    top: 0
+    left: 0
+    display: flex
+    flex-wrap: wrap
+
   &__link
     text-decoration: none
     flex: 1 1 auto
@@ -53,12 +61,32 @@
     margin-top: auto
 
   &__modificator
-    position: absolute
-    top: 0
-    left: 0
+    align-self: center
+    margin-left: 10px
 
-    img
-      width: 100%
+    &_hit
+      background:
+        image: url('../img/modificator-hit.png')
+        repeat: no-repeat
+        size: contain
+      width: 45px
+      height: 45px
+
+    &_new
+      background:
+        image: url('../img/modificator-new.png')
+        repeat: no-repeat
+        size: contain
+      width: 45px
+      height: 45px
+
+    &_action
+      background:
+        image: url('../img/modificator-action.png')
+        repeat: no-repeat
+        size: contain
+      width: 70px
+      height: 30px
 
 .top-line-remove
   height: 1px

@@ -288,7 +288,7 @@ function showCityVariants(){
 jQuery(document).ready(function(){
     $('.qtyplus').click(function(e){
         e.preventDefault();
-        fieldName = $(this).attr('field');
+        var fieldName = $(this).attr('field');
         console.log(fieldName)
         var currentVal = parseInt($('input[name='+fieldName+']').val());
         if (!isNaN(currentVal)) {
@@ -300,7 +300,7 @@ jQuery(document).ready(function(){
     });
     $(".qtyminus").click(function(e) {
         e.preventDefault();
-        fieldName = $(this).attr('field');
+        var fieldName = $(this).attr('field');
         var currentVal = parseInt($('input[name='+fieldName+']').val());
         if (!isNaN(currentVal) && currentVal > 1) {
             $('input[name='+fieldName+']').val(currentVal - 1);

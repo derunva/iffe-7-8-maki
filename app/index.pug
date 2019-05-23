@@ -10,11 +10,11 @@ html(lang="uk")
           .column-laptop-3-4
             .row.m-b-20
               .column-laptop-1-3.column-tablet-1-2.bottom-line.m-b-50
-                +product("product-1.png", "Новогодний подарок", "price", "hit")
+                +product("product-1.png", "Новогодний подарок", "price", ["hit", 'new', 'action'])
               .column-laptop-1-3.column-tablet-1-2.bottom-line.m-b-50
-                +product("product-2.png", "Букет из красных роз, 1000 шт.", "price", "new")
+                +product("product-2.png", "Букет из красных роз, 1000 шт.", "price", ["new"])
               .column-laptop-1-3.column-tablet-1-2.bottom-line.m-b-50
-                +product("product-3.png", "Букет из альстромерий и коробка конфет Rafaello", "price", "action")
+                +product("product-3.png", "Букет из альстромерий и коробка конфет Rafaello", "price", ["action"])
               each i in '123'
                 .column-laptop-1-3.column-tablet-1-2.bottom-line.m-b-50
                   +product("product-"+i+".png", "description", "price")
