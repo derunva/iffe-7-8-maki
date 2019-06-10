@@ -1,18 +1,12 @@
-mixin product(image, description, price, modificator)
+mixin product(image, description, price, labels)
   //- modificator : "hit" - add hit  : "new"  -  add new  :  "action" - add action
 
   .product.relative.m-b-30
     a(href="#").product__link
-      case modificator
-        when "hit"
-          .product__modificator
-            img(src="./img/modificator-hit.png" alt="hit")
-        when "new"
-          .product__modificator
-            img(src="./img/modificator-new.png" alt="new")
-        when "action"
-          .product__modificator
-            img(src="./img/modificator-action.png" alt="action")
+      -if(labels)
+        .product__labels
+          each label in labels
+            div(class='product__modificator product__modificator_' + label)
       .product__image
         img(src="./img/" + image alt="product image")
       .product__description #{description}
@@ -74,4 +68,3 @@ mixin delivery-radio(title, name, id, checked)
       label(for="" + id) #{title}
         span.radiospan
           span.radiochecked
-
